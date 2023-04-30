@@ -14,7 +14,7 @@ export const login =
     try {
       dispatch(loginRequest());
       const { data } = await api.post("/login", { email, password });
-      dispatch(loginSuccess(data.userInfo));
+      dispatch(loginSuccess(data));
     } catch (error) {
       dispatch(loginFail("Deu ruim"));
     }
@@ -30,7 +30,7 @@ export const register =
         email,
         password,
       });
-      dispatch(registerSuccess(data.userInfo));
+      dispatch(registerSuccess(data));
     } catch (error) {
       dispatch(registerFail("Deu ruim"));
     }

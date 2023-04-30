@@ -1,19 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "./interfaces";
+import { RootState } from "../store";
 
-const initialState: User = {
-  loading: false,
-  userInfo: {
-    username: "",
-    email: "",
-    token: "",
-  },
-  error: "",
+const getInitialUserState = (): User => {
+  const storedUserState = localStorage.getItem("user");
+  return storedUserState
+    ? JSON.parse(storedUserState)
+    : {
+        loading: false,
+        userInfo: {
+          username: "",
+          email: "",
+          token: "",
+        },
+        error: "",
+      };
 };
 
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: getInitialUserState(),
   reducers: {
     loginRequest: (state) => {
       state.loading = true;
@@ -21,6 +27,7 @@ const userSlice = createSlice({
     loginSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
       state.loading = false;
       state.userInfo = action.payload;
+      localStorage.setItem("user", JSON.stringify(state.userInfo));
     },
     loginFail: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -32,6 +39,7 @@ const userSlice = createSlice({
     registerSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
       state.loading = false;
       state.userInfo = action.payload;
+      localStorage.setItem("user", JSON.stringify(state.userInfo));
     },
     registerFail: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -40,9 +48,12 @@ const userSlice = createSlice({
     logout: (state) => {
       state.userInfo = undefined;
       state.error = undefined;
+      localStorage.removeItem("user");
     },
   },
 });
+
+export const selectUser = (state: RootState) => state.user;
 
 export const {
   loginRequest,
