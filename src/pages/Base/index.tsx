@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 
 export default function Base() {
   return (
-    <div>
+    <div className="h-screen flex flex-col justify-between items-center	 bg-white text-black dark:bg-black dark:text-white text-base font-inter duration-500">
       <Navbar />
       <Outlet />
       <Footer />

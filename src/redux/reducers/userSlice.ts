@@ -3,7 +3,7 @@ import { User } from "./interfaces";
 import { RootState } from "../store";
 
 const getInitialUserState = (): User => {
-  const storedUserState = localStorage.getItem("user");
+  const storedUserState = localStorage.getItem("userInfo");
   return storedUserState
     ? JSON.parse(storedUserState)
     : {
@@ -25,9 +25,10 @@ const userSlice = createSlice({
       state.loading = true;
     },
     loginSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
+      state.error = "";
       state.loading = false;
       state.userInfo = action.payload;
-      localStorage.setItem("user", JSON.stringify(state.userInfo));
+      localStorage.setItem("userInfo", JSON.stringify(state));
     },
     loginFail: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -37,9 +38,10 @@ const userSlice = createSlice({
       state.loading = true;
     },
     registerSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
+      state.error = "";
       state.loading = false;
       state.userInfo = action.payload;
-      localStorage.setItem("user", JSON.stringify(state.userInfo));
+      localStorage.setItem("userInfo", JSON.stringify(state));
     },
     registerFail: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -48,7 +50,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.userInfo = undefined;
       state.error = undefined;
-      localStorage.removeItem("user");
+      localStorage.removeItem("userInfo");
     },
   },
 });

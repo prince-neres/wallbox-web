@@ -1,9 +1,14 @@
-export default function Footer() {
+function Footer() {
   return (
-    <footer>
+    <footer className="flex w-full p-10 text-center justify-center items-end">
       <p>
-        Copyright ©2023{" "}
-        <a href="https://prince-neres.space" target="_blank" rel="noreferrer">
+        Copyright © 2023{" "}
+        <a
+          href="https://prince-neres.space"
+          target="_blank"
+          className="hover:text-cyan-500 duration-200"
+          rel="noreferrer"
+        >
           prince-neres.space.{" "}
         </a>{" "}
         Todos os direitos reservados.
@@ -11,3 +16,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

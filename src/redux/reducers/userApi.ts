@@ -15,13 +15,19 @@ export const login =
       dispatch(loginRequest());
       const { data } = await api.post("/login", { email, password });
       dispatch(loginSuccess(data));
-    } catch (error) {
-      dispatch(loginFail("Deu ruim"));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      dispatch(loginFail(error.response.data.message));
     }
   };
 
 export const register =
-  (username: string, email: string, password: string) =>
+  (
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+  ) =>
   async (dispatch: AppDispatch) => {
     try {
       dispatch(registerRequest());
@@ -29,9 +35,11 @@ export const register =
         username,
         email,
         password,
+        confirm_password: confirmPassword,
       });
       dispatch(registerSuccess(data));
-    } catch (error) {
-      dispatch(registerFail("Deu ruim"));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      dispatch(registerFail(error.response.data.message));
     }
   };

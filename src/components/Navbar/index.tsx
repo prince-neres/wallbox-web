@@ -12,25 +12,23 @@ function Navbar() {
     dispatch(logout());
   };
 
-  console.log(userInfo);
-
   return (
-    <nav>
-      <div>
-        <Link to="/" className={location.pathname === "/" ? "" : ""}>
-          <p>Ínicio</p>
+    <nav className="flex items-center md:items-center  h-auto justify-between">
+      <div className="hidden sm:flex sm:flex-row p-8">
+        <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
+          <p className="flex pr-5">Ínicio</p>
         </Link>
 
         {userInfo?.token ? (
           <button type="button" onClick={handleLogout}>
-            <p>Sair</p>
+            <p className="flex pr-5">Sair</p>
           </button>
         ) : (
           <Link
             to="/login"
-            className={location.pathname === "/login" ? "" : ""}
+            className={location.pathname === "/login" ? "font-bold" : ""}
           >
-            <p className="">Login</p>
+            <p className="flex pr-5">Login</p>
           </Link>
         )}
       </div>

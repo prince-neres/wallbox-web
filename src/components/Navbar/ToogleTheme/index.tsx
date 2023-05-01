@@ -3,11 +3,11 @@ import { useEffect } from "react";
 
 export default function ToggleTheme() {
   useEffect(() => {
-    const darkMode = localStorage.getItem("darkMode") ?? false;
+    const darkMode = Boolean(localStorage.getItem("darkMode"));
     darkMode
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
-  });
+  }, []);
 
   const toogle = () => {
     document.documentElement.classList.toggle("dark");
@@ -18,13 +18,13 @@ export default function ToggleTheme() {
   };
 
   return (
-    <div className="h-14 rounded-full pr-8">
+    <div className="h-10 rounded-full pr-8">
       <MoonIcon
-        className="block dark:hidden cursor-pointer h-14 hover:text-dark-orange duration-200"
+        className="block dark:hidden cursor-pointer h-10 duration-200"
         onClick={toogle}
       />
       <SunIcon
-        className="hidden dark:block cursor-pointer h-14 hover:text-dark-orange duration-200"
+        className="hidden dark:block cursor-pointer h-10 duration-200"
         onClick={toogle}
       />
     </div>
