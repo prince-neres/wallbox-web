@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "./interfaces";
+import { UserType } from "../../types";
 import { RootState } from "../store";
 
-const getInitialUserState = (): User => {
+const getInitialUserState = (): UserType => {
   const storedUserState = localStorage.getItem("userInfo");
   return storedUserState
     ? JSON.parse(storedUserState)
@@ -24,7 +24,7 @@ const userSlice = createSlice({
     loginRequest: (state) => {
       state.loading = true;
     },
-    loginSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
+    loginSuccess: (state, action: PayloadAction<UserType["userInfo"]>) => {
       state.error = "";
       state.loading = false;
       state.userInfo = action.payload;
@@ -37,7 +37,7 @@ const userSlice = createSlice({
     registerRequest: (state) => {
       state.loading = true;
     },
-    registerSuccess: (state, action: PayloadAction<User["userInfo"]>) => {
+    registerSuccess: (state, action: PayloadAction<UserType["userInfo"]>) => {
       state.error = "";
       state.loading = false;
       state.userInfo = action.payload;
