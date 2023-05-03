@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../redux/reducers/userSlice";
 import ToggleTheme from "./ToogleTheme";
+import MobilMenu from "./MobleMenu";
 
 function Navbar() {
   const location = useLocation();
@@ -13,16 +14,24 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center md:items-center  h-auto justify-between">
+    <nav className="flex items-center md:items-center w-full h-auto justify-between">
       <div className="hidden sm:flex sm:flex-row p-8">
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
           <p className="flex pr-5">Ínicio</p>
         </Link>
 
         {userInfo?.token ? (
-          <button type="button" onClick={handleLogout}>
-            <p className="flex pr-5">Sair</p>
-          </button>
+          <>
+            <Link
+              to="/profile"
+              className={location.pathname === "/profile" ? "font-bold" : ""}
+            >
+              <p className="pr-5">Profile</p>
+            </Link>
+            <button type="button" onClick={handleLogout}>
+              <p className="flex">Sair</p>
+            </button>
+          </>
         ) : (
           <Link
             to="/login"
@@ -32,6 +41,7 @@ function Navbar() {
           </Link>
         )}
       </div>
+      <MobilMenu />
       <ToggleTheme />
     </nav>
   );
