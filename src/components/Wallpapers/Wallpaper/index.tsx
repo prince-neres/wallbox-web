@@ -1,4 +1,6 @@
 import { WallpaperType } from "../../../types";
+import { useState } from "react";
+import Loader from "../../Loader";
 
 export default function Wallpaper({
   image,
@@ -8,9 +10,21 @@ export default function Wallpaper({
   user,
   date_created,
 }: WallpaperType) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg">
-      <img className="w-full" src={image} alt={title} />
+      {!imageLoaded && <Loader />}
+      <img
+        className="w-full"
+        src={image}
+        alt={title}
+        onLoad={handleImageLoad}
+      />
       <div className="px-6 py-4">
         <div className="font-bold mb-2">{title}</div>
         <p className="text-gray-700 text-base">{description}</p>

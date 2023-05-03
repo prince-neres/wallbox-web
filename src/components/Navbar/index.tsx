@@ -23,6 +23,14 @@ function Navbar() {
         {userInfo?.token ? (
           <>
             <Link
+              to="/form-wallpaper"
+              className={
+                location.pathname === "/form-wallpaper" ? "font-bold" : ""
+              }
+            >
+              <p className="pr-5">Enviar Wallpaper</p>
+            </Link>
+            <Link
               to="/profile"
               className={location.pathname === "/profile" ? "font-bold" : ""}
             >
