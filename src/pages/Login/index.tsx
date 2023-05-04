@@ -46,7 +46,6 @@ export default function LoginForm() {
       >
         {userInfo.loading && <Loader />} Entrar
       </button>
-      {userInfo.error && <p className="text-red-500">{userInfo.error}</p>}
       <div>
         Sem conta?{" "}
         <Link className="text-cyan-600 hover:text-cyan-500" to={"/register"}>

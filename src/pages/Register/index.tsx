@@ -62,8 +62,12 @@ export default function RegisterForm() {
       >
         {userInfo.loading && <Loader />}Cadastrar
       </button>
-      {userInfo.error && <p className="text-red-500">{userInfo.error}</p>}
-      <Link to={"/login"}>Possui conta? Entrar</Link>
+      <div>
+        Possui conta?{" "}
+        <Link className="text-cyan-600 hover:text-cyan-500" to={"/login"}>
+          Entrar
+        </Link>
+      </div>
     </form>
   );
 }
