@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import api from "../../api";
 import TagsInput from "./TagInput";
 import FileInput from "./FileInput";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/reducers/userSlice";
 import Loader from "../Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function ImageUpload() {
   const [image, setImage] = useState<File | null>(null);
@@ -14,12 +13,12 @@ function ImageUpload() {
   const [tags, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { userInfo } = useSelector(selectUser);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true);
     if (image) {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("image", image);
       formData.append("title", title);
@@ -30,14 +29,17 @@ function ImageUpload() {
         await api.post("/upload_wallpaper", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${userInfo?.token}`,
           },
         });
+        toast.success("Imagem enviada com sucesso.", { autoClose: 3000 });
+        navigate("/");
       } catch (error) {
-        toast.error("Erro ao enviar imagem.");
+        toast.error("Erro ao enviar imagem.", { autoClose: 3000 });
       } finally {
         setIsLoading(false);
       }
+    } else {
+      toast.error("Imagem precisa ser importada!", { autoClose: 2000 });
     }
   };
 
@@ -72,7 +74,7 @@ function ImageUpload() {
 
       <TagsInput tags={tags} setTags={setTags} />
 
-      <FileInput setImage={setImage} />
+      <FileInput image={image} setImage={setImage} />
 
       <button
         className="font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
