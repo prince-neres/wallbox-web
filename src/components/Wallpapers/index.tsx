@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
 import api from "../../api";
 import Wallpaper from "./Wallpaper";
 import { WallpaperType } from "../../types";
+import { useQuery } from "react-query";
 
 interface WallpaperProps {
-  IsPublic: boolean;
+  IsPublic?: boolean;
 }
 
 export default function Wallpapers(props: WallpaperProps) {
-  const [wallpapers, setWallpapers] = useState<WallpaperType[]>([]);
-
-  useEffect(() => {
-    const getWallpapers = async () => {
-      try {
-        const url = props.IsPublic ? "wallpapers" : "user-wallpapers";
-        const { data } = await api.get(url);
-        setWallpapers(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getWallpapers();
-  }, []);
+  const { data: wallpapers } = useQuery<WallpaperType[]>("wallpapers", () =>
+    api
+      .get(`/${props.IsPublic ? "wallpapers" : "user-wallpapers"}`)
+      .then((res) => res.data)
+  );
 
   return (
     <div className="flex flex-row flex-wrap gap-5 justify-center items-center py-5">
-      {wallpapers.map((wallpaper) => (
+      {wallpapers?.map((wallpaper: WallpaperType) => (
         <Wallpaper
           key={wallpaper.id}
           id={wallpaper.id}
@@ -38,6 +28,7 @@ export default function Wallpapers(props: WallpaperProps) {
           filename={wallpaper.filename}
           date_created={wallpaper.date_created}
           date_updated={wallpaper.date_updated}
+          is_public={props.IsPublic}
         />
       ))}
     </div>
