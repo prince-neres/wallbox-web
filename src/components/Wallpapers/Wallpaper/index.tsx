@@ -18,13 +18,15 @@ export default function Wallpaper({
 
   return (
     <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg">
-      {!imageLoaded && <Loader />}
-      <img
-        className="w-full"
-        src={image}
-        alt={title}
-        onLoad={handleImageLoad}
-      />
+      <div className="flex flex-col justify-center items-center">
+        {!imageLoaded && <Loader />}
+        <img
+          className="w-full select-none"
+          src={image}
+          alt={title}
+          onLoad={handleImageLoad}
+        />
+      </div>
       <div className="px-6 py-4">
         <div className="font-bold mb-2">{title}</div>
         <p className="text-gray-700 text-base">{description}</p>
