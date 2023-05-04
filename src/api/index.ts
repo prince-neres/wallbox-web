@@ -1,6 +1,6 @@
 import axios from "axios";
-import { logout } from "./redux/reducers/userSlice";
-import store from "./redux/store";
+import { logout } from "../redux/reducers/userSlice";
+import store from "../redux/store";
 import { toast } from "react-toastify";
 
 const api = axios.create({
@@ -9,6 +9,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    console.log(config);
     const userInfoString = localStorage.getItem("userInfo");
     if (userInfoString) {
       const { userInfo } = JSON.parse(userInfoString);
@@ -26,7 +27,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Se o erro for um token expirado, deslogue o usuário
+    toast.error(error.response?.data?.message);
     if (
       error.response?.status === 401 &&
       error.response?.data?.msg === "Token has expired"

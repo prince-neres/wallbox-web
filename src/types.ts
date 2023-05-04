@@ -8,15 +8,16 @@ export interface UserInfoType {
 }
 
 export interface WallpaperType {
-  id: number;
+  id?: number;
   user?: UserInfoType;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   tags?: string[];
-  filename: string;
-  image: string;
-  date_created: string;
-  date_updated: string;
+  filename?: string;
+  image?: string;
+  date_created?: string;
+  date_updated?: string;
+  is_public?: boolean;
 }
 
 export interface UserType {
