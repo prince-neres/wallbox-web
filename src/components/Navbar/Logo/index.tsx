@@ -4,9 +4,7 @@ export default function Logo() {
       version="1.2"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 340 88"
-      width="340"
-      height="88"
-      className="h-24 w-24"
+      className="h-7"
     >
       <title>WallBox</title>
       <defs>
