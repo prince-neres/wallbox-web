@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../redux/reducers/userSlice";
 import ToggleTheme from "./ToogleTheme";
 import MobilMenu from "./MobleMenu";
+import Logo from "./Logo";
 
 function Navbar() {
   const location = useLocation();
@@ -14,7 +15,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center md:items-center w-full h-auto justify-between">
+    <nav className="flex items-center w-full h-auto justify-between sm:justify-evenly text-center">
+      <Link to="/" className="hidden sm:block px-8 h-24 w-auto">
+        <Logo />
+      </Link>
       <div className="hidden sm:flex sm:flex-row p-8">
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
           <p className="flex pr-5">Ínicio</p>
@@ -28,7 +32,7 @@ function Navbar() {
                 location.pathname === "/form-wallpaper" ? "font-bold" : ""
               }
             >
-              <p className="pr-5">Enviar Wallpaper</p>
+              <p className="pr-5">Enviar</p>
             </Link>
             <Link
               to="/profile"

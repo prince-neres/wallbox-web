@@ -31,43 +31,38 @@ function MobilMenu() {
         <div className="sm:hidden flex-col py-5 mobile-menu">
           <Link
             to={"/"}
-            className={
-              location.pathname === "/"
-                ? "font-bold"
-                : "hover:text-dark-orange duration-200"
-            }
+            className={location.pathname === "/" ? "font-bold" : ""}
           >
-            <p className="flex">Ínicio</p>
+            <p className="text-center">Ínicio</p>
           </Link>
 
           {userInfo?.token ? (
             <>
               <Link
-                to={"/profile"}
+                to={"/form-wallpaper"}
                 className={
-                  location.pathname === "/profile"
-                    ? "font-bold"
-                    : "hover:text-dark-orange duration-200"
+                  location.pathname === "/form-wallpaper" ? "font-bold" : ""
                 }
               >
-                <p className="flex pt-2">Perfil</p>
+                <p className="text-center pt-2">Enviar</p>
               </Link>
+              <Link
+                to={"/profile"}
+                className={location.pathname === "/profile" ? "font-bold" : ""}
+              >
+                <p className="text-center pt-2">Perfil</p>
+              </Link>
+
               <button onClick={handleLogout}>
-                <p className="flex hover:text-dark-orange duration-200 pt-2">
-                  Sair
-                </p>
+                <p className="text-center pt-2">Sair</p>
               </button>
             </>
           ) : (
             <Link
               to={"/login"}
-              className={
-                location.pathname === "/login"
-                  ? "font-bold"
-                  : "hover:text-dark-orange duration-200"
-              }
+              className={location.pathname === "/login" ? "font-bold" : ""}
             >
-              <p className="flex duration-200 pt-2">Login</p>
+              <p className="text-center pt-2">Login</p>
             </Link>
           )}
         </div>
