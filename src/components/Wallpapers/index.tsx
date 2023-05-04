@@ -3,13 +3,18 @@ import api from "../../api";
 import Wallpaper from "./Wallpaper";
 import { WallpaperType } from "../../types";
 
-export default function Wallpapers() {
+interface WallpaperProps {
+  IsPublic: boolean;
+}
+
+export default function Wallpapers(props: WallpaperProps) {
   const [wallpapers, setWallpapers] = useState<WallpaperType[]>([]);
 
   useEffect(() => {
     const getWallpapers = async () => {
       try {
-        const { data } = await api.get("wallpapers");
+        const url = props.IsPublic ? "wallpapers" : "user-wallpapers";
+        const { data } = await api.get(url);
         setWallpapers(data);
       } catch (error) {
         console.error(error);

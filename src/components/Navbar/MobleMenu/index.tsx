@@ -39,6 +39,14 @@ function MobilMenu() {
           {userInfo?.token ? (
             <>
               <Link
+                to={"/user-wallpapers"}
+                className={
+                  location.pathname === "/user-wallpapers" ? "font-bold" : ""
+                }
+              >
+                <p className="text-center pt-2">Meus</p>
+              </Link>
+              <Link
                 to={"/form-wallpaper"}
                 className={
                   location.pathname === "/form-wallpaper" ? "font-bold" : ""

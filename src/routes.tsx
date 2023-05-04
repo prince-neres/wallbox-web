@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Base from "./pages/Base";
 import Profile from "./pages/Profile";
 import FormWallpaper from "./pages/FormWallpaper";
+import UserWallpapers from "./pages/UserWallpapers";
 
 interface PrivateRouteProps {
   children: JSX.Element;
@@ -25,6 +26,14 @@ function Router() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/user-wallpapers"
+            element={
+              <PrivateRoute>
+                <UserWallpapers />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/profile"
             element={
