@@ -15,7 +15,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center w-full h-auto justify-between sm:justify-evenly text-center">
+    <nav className="flex items-center w-full h-auto justify-between sm:justify-evenly text-center bg-black text-white">
       <Link to="/" className="hidden sm:block px-8 h-24 w-auto">
         <Logo />
       </Link>

@@ -1,4 +1,5 @@
 import { ArrowUpTrayIcon } from "@heroicons/react/20/solid";
+import { convertToMB } from "../../../utils/scripts";
 
 interface FileInputProps {
   image: File | null;
@@ -11,11 +12,6 @@ export default function FileInput({ image, setImage }: FileInputProps) {
     if (imagemSelecionada) {
       setImage(imagemSelecionada);
     }
-  };
-
-  const convertToMB = (size: number) => {
-    const sizeInMB = size / (1024 * 1024);
-    return sizeInMB.toFixed(2); // retorna a string com duas casas decimais
   };
 
   return (

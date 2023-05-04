@@ -1,6 +1,7 @@
 import { WallpaperType } from "../../../types";
 import { useState } from "react";
 import Loader from "../../Loader";
+import { formatDate } from "../../../utils/scripts";
 
 export default function Wallpaper({
   image,
@@ -21,7 +22,7 @@ export default function Wallpaper({
       <div className="flex flex-col justify-center items-center">
         {!imageLoaded && <Loader />}
         <img
-          className="w-full select-none"
+          className="w-full select-none aspect-video"
           src={image}
           alt={title}
           onLoad={handleImageLoad}
@@ -40,7 +41,7 @@ export default function Wallpaper({
       </div>
       <div className="flex justify-between px-6 pb-4">
         <p>{user?.username}</p>
-        <p>{date_created}</p>
+        <p>{formatDate(date_created)}</p>
       </div>
     </div>
   );
