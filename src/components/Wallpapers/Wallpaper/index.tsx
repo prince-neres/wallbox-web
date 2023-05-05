@@ -37,7 +37,7 @@ export default function Wallpaper({
   };
 
   return (
-    <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg">
+    <div className="flex flex-col">
       {!is_public && (
         <span className="flex justify-end gap-2 mb-3">
           <span
@@ -57,35 +57,36 @@ export default function Wallpaper({
           </span>
         </span>
       )}
+      <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg">
+        {showDeleteConfirmation && (
+          <ModalDeletion
+            title="Confirmar deleção?"
+            onCancel={() => setShowDeleteConfirmation(false)}
+            onConfirm={handleDelete}
+          />
+        )}
 
-      {showDeleteConfirmation && (
-        <ModalDeletion
-          title="Confirmar deleção?"
-          onCancel={() => setShowDeleteConfirmation(false)}
-          onConfirm={handleDelete}
-        />
-      )}
-
-      <div className="flex flex-col justify-center items-center">
-        <ImageModal src={image || ""} alt={title || ""} />
-      </div>
-      <div className="px-6 py-4">
-        <div className="font-bold mb-2">{title}</div>
-        <p className="text-gray-700 text-base">{description}</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        {tags?.map((tag, index) => (
-          <span
-            key={index}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            #{tag}
-          </span>
-        ))}
-      </div>
-      <div className="flex justify-between px-6 pb-4">
-        <p>{user?.username}</p>
-        <p>{date_created && formatDate(date_created)}</p>
+        <div className="flex flex-col justify-center items-center">
+          <ImageModal src={image || ""} alt={title || ""} />
+        </div>
+        <div className="px-6 py-4">
+          <div className="font-bold mb-2">{title}</div>
+          <p className="text-gray-700 text-base">{description}</p>
+        </div>
+        <div className="px-6 pt-4 pb-2">
+          {tags?.map((tag, index) => (
+            <span
+              key={index}
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-between px-6 pb-4">
+          <p>{user?.username}</p>
+          <p>{date_created && formatDate(date_created)}</p>
+        </div>
       </div>
     </div>
   );

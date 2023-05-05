@@ -41,7 +41,7 @@ export default function ImageModal({ src, alt }: ImageModalProps) {
         src={src}
         alt={alt}
         onClick={handleImageClick}
-        className="cursor-pointer select-none aspect-video rounded"
+        className="cursor-pointer select-none aspect-video rounded-t"
       />
 
       {showModal &&
