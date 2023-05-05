@@ -34,7 +34,7 @@ export default function Wallpapers(props: WallpaperProps) {
               key={wallpaper.id}
               id={wallpaper.id}
               user={wallpaper.user}
-              image={`https://${wallpaper.image}`}
+              image={wallpaper.image}
               title={wallpaper.title}
               description={wallpaper.description}
               tags={wallpaper.tags}

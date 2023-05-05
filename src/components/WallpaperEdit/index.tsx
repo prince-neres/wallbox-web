@@ -66,7 +66,7 @@ function WallpaperEdit() {
       className="flex flex-col gap-5 w-80 mt-10"
       onKeyDown={handleKeyDown}
     >
-      <ImageModal alt={title} src={"https://" + image} />
+      <ImageModal alt={title} src={image} />
       <input
         value={title}
         type="text"
