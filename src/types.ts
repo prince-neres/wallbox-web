@@ -3,6 +3,7 @@ export interface UserInfoType {
   username: string;
   email: string;
   token?: string;
+  image?: string;
   date_created: string;
   date_updated: string;
 }

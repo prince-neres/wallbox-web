@@ -47,6 +47,12 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    updateSuccess: (state, action: PayloadAction<UserType["userInfo"]>) => {
+      state.error = "";
+      state.loading = false;
+      state.userInfo = action.payload;
+      localStorage.setItem("userInfo", JSON.stringify(state));
+    },
     logout: (state) => {
       state.userInfo = undefined;
       state.error = undefined;
@@ -65,5 +71,6 @@ export const {
   registerFail,
   registerRequest,
   registerSuccess,
+  updateSuccess,
 } = userSlice.actions;
 export default userSlice.reducer;
