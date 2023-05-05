@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../../redux/reducers/userSlice";
 
-function MobilMenu() {
+function MobileMenu() {
   const location = useLocation();
   const dispatch = useDispatch();
   const { userInfo } = useSelector(selectUser);
@@ -79,4 +79,4 @@ function MobilMenu() {
   );
 }
 
-export default MobilMenu;
+export default MobileMenu;

@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../redux/reducers/userSlice";
 import ToggleTheme from "./ToogleTheme";
-import MobilMenu from "./MobleMenu";
+import MobileMenu from "./MobileMenu";
 import Logo from "./Logo";
 
 function Navbar() {
@@ -46,7 +46,7 @@ function Navbar() {
               to="/profile"
               className={location.pathname === "/profile" ? "font-bold" : ""}
             >
-              <p className="pr-5">Profile</p>
+              <p className="pr-5">Perfil</p>
             </Link>
             <button type="button" onClick={handleLogout}>
               <p className="flex">Sair</p>
@@ -61,7 +61,7 @@ function Navbar() {
           </Link>
         )}
       </div>
-      <MobilMenu />
+      <MobileMenu />
       <ToggleTheme />
     </nav>
   );
