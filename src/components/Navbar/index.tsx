@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../../redux/reducers/userSlice";
+import { logout, selectUser } from "../../store/user/userSlice";
 import ToggleTheme from "./ToogleTheme";
 import MobileMenu from "./MobileMenu";
 import Logo from "./Logo";
@@ -23,7 +23,12 @@ function Navbar() {
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
           <p className="flex pr-5">Ínicio</p>
         </Link>
-
+        <Link
+          to="/wallpapers"
+          className={location.pathname === "/wallpapers" ? "font-bold" : ""}
+        >
+          <p className="pr-5">Wallpapers</p>
+        </Link>
         {userInfo?.token ? (
           <>
             <Link

@@ -7,6 +7,7 @@ import FormWallpaper from "../pages/FormWallpaper";
 import UserWallpapers from "../pages/UserWallpapers";
 import Home from "../pages/Home";
 import PrivateRoute from "./private";
+import Wallpapers from "../components/Wallpapers";
 
 function Router() {
   return (
@@ -14,6 +15,10 @@ function Router() {
       <Routes>
         <Route path="/" element={<Base />}>
           <Route index element={<Home />} />
+          <Route
+            path="/wallpapers/:page?"
+            element={<Wallpapers IsPublic={true} />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
