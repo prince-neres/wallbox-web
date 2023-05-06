@@ -1,4 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import { toast } from "react-toastify";
 
 interface TagsInputProps {
   tags: string[];
@@ -12,8 +13,15 @@ const TagsInput = ({ tags, setTags }: TagsInputProps) => {
 
   const addTags = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.target instanceof HTMLInputElement && event.target.value !== "") {
-      setTags([...tags, event.target.value]);
-      event.target.value = "";
+      if (tags.length >= 5) {
+        toast.error("Limite de 5 tags atingido!");
+      } else if (event.target.value.length >= 20) {
+        console.log(event.target.value.length);
+        toast.error("Limite de 20 caracterres para tag atingido!");
+      } else {
+        setTags([...tags, event.target.value]);
+        event.target.value = "";
+      }
     }
   };
 

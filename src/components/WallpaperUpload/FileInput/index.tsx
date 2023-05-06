@@ -4,13 +4,19 @@ import { convertToMB } from "../../../utils/scripts";
 interface FileInputProps {
   image: File | null;
   setImage: React.Dispatch<React.SetStateAction<File | null>>;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function FileInput({ image, setImage }: FileInputProps) {
+export default function FileInput({
+  image,
+  setImage,
+  setImageUrl,
+}: FileInputProps) {
   const handleImagemChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const imagemSelecionada = event.target.files?.[0];
     if (imagemSelecionada) {
       setImage(imagemSelecionada);
+      setImageUrl(URL.createObjectURL(imagemSelecionada));
     }
   };
 

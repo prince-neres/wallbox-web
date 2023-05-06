@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "../../api/api";
 import TagsInput from "./TagInput";
 import FileInput from "./FileInput";
 import Loader from "../Loader";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import ImageModal from "../Wallpaper/WallpaperModal";
 
 function ImageUpload() {
   const [image, setImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState<string>("");
@@ -50,39 +51,51 @@ function ImageUpload() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      encType="multipart/form-data"
-      className="flex flex-col gap-5 w-80"
-      onKeyDown={handleKeyDown}
-    >
-      <input
-        value={title}
-        type="text"
-        placeholder="Título"
-        onChange={(e) => setTitle(e.target.value)}
-        className="p-3 rounded border-black border-2 text-black"
-      />
+    <div className="flex flex-col md:flex-row gap-5">
+      {imageUrl && (
+        <div className="w-64 md:w-96 sm:w-80">
+          <ImageModal alt={title} src={imageUrl} />{" "}
+        </div>
+      )}
 
-      <input
-        value={description}
-        type="text"
-        placeholder="Descrição"
-        onChange={(e) => setDescription(e.target.value)}
-        className="p-3 rounded border-black border-2 text-black"
-      />
-
-      <TagsInput tags={tags} setTags={setTags} />
-
-      <FileInput image={image} setImage={setImage} />
-
-      <button
-        className="font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
-        type="submit"
+      <form
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        className="flex flex-col gap-5 w-80"
+        onKeyDown={handleKeyDown}
       >
-        {isLoading ? <Loader /> : "Enviar"}
-      </button>
-    </form>
+        <input
+          value={title}
+          type="text"
+          placeholder="Título"
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 rounded border-black border-2 text-black"
+        />
+
+        <input
+          value={description}
+          type="text"
+          placeholder="Descrição"
+          onChange={(e) => setDescription(e.target.value)}
+          className="p-3 rounded border-black border-2 text-black"
+        />
+
+        <TagsInput tags={tags} setTags={setTags} />
+
+        <FileInput
+          image={image}
+          setImage={setImage}
+          setImageUrl={setImageUrl}
+        />
+
+        <button
+          className="font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
+          type="submit"
+        >
+          {isLoading ? <Loader /> : "Enviar"}
+        </button>
+      </form>
+    </div>
   );
 }
 

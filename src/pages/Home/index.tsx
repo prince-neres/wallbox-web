@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div>
+    <div className="flex-grow">
       <p>sobre</p>
     </div>
   );

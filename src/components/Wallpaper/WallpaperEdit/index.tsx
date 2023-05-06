@@ -60,38 +60,42 @@ function WallpaperEdit() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      encType="multipart/form-data"
-      className="flex flex-col gap-5 w-80 mt-10"
-      onKeyDown={handleKeyDown}
-    >
-      <ImageModal alt={title} src={image} />
-      <input
-        value={title}
-        type="text"
-        placeholder="Título"
-        onChange={(e) => setTitle(e.target.value)}
-        className="p-3 rounded border-black border-2 text-black"
-      />
-
-      <input
-        value={description}
-        type="text"
-        placeholder="Descrição"
-        onChange={(e) => setDescription(e.target.value)}
-        className="p-3 rounded border-black border-2 text-black"
-      />
-
-      <TagsInput tags={tags} setTags={setTags} />
-
-      <button
-        className="font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
-        type="submit"
+    <div className="flex flex-col md:flex-row gap-5">
+      <div className="w-64 md:w-96 sm:w-80">
+        <ImageModal alt={title} src={image} />
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        className="flex flex-col gap-5 w-64 sm:w-80"
+        onKeyDown={handleKeyDown}
       >
-        {isLoading ? <Loader /> : "Salvar"}
-      </button>
-    </form>
+        <input
+          value={title}
+          type="text"
+          placeholder="Título"
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 rounded border-black border-2 text-black"
+        />
+
+        <input
+          value={description}
+          type="text"
+          placeholder="Descrição"
+          onChange={(e) => setDescription(e.target.value)}
+          className="p-3 rounded border-black border-2 text-black"
+        />
+
+        <TagsInput tags={tags} setTags={setTags} />
+
+        <button
+          className="font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
+          type="submit"
+        >
+          {isLoading ? <Loader /> : "Salvar"}
+        </button>
+      </form>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-black text-white flex w-full p-8 justify-center items-end mt-10 text-center">
+    <footer className="bg-black text-white flex w-full p-8 justify-center items-end	 text-center">
       <p>
         Copyright © 2023{" "}
         <a

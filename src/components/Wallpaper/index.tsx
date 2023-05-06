@@ -39,60 +39,64 @@ export default function Wallpaper({
 
   return (
     <div className="flex flex-col">
+      {showDeleteConfirmation && (
+        <ModalDeletion
+          title="Confirmar deleção?"
+          onCancel={() => setShowDeleteConfirmation(false)}
+          onConfirm={handleDelete}
+        />
+      )}
       {!is_public && (
-        <span className="flex justify-end gap-2 mb-3">
+        <span className="flex justify-end gap-3 mb-3">
           <span
-            className="flex gap-1 text-blue-500  cursor-pointer"
+            className="flex gap-1 text-blue-500 items-center cursor-pointer"
             onClick={handleWallpaperEdit}
           >
-            <PencilIcon className="h-6 w-6" title="Editar" />
+            <PencilIcon className="h-4 w-4" title="Editar" />
             <p>Editar</p>
           </span>
 
           <span
-            className="flex gap-1 text-red-500 cursor-pointer"
+            className="flex gap-1 text-red-500 items-center cursor-pointer"
             onClick={() => setShowDeleteConfirmation(true)}
           >
-            <TrashIcon className=" h-6 w-6 " title="Remover" />
+            <TrashIcon className="h-4 w-4" title="Remover" />
             <p>Remover</p>
           </span>
         </span>
       )}
-      <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg">
-        {showDeleteConfirmation && (
-          <ModalDeletion
-            title="Confirmar deleção?"
-            onCancel={() => setShowDeleteConfirmation(false)}
-            onConfirm={handleDelete}
-          />
-        )}
-
-        <div className="flex flex-col justify-center items-center">
-          <ImageModal src={image || ""} alt={title || ""} />
-        </div>
-        <div className="px-6 py-4">
-          <div className="font-bold mb-2">{title}</div>
-          <p className="text-gray-700 text-base">{description}</p>
-        </div>
-        <div className="px-6 pt-4 pb-2">
-          {tags?.map((tag, index) => (
-            <span
-              key={index}
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex justify-between items-center px-6 py-4">
-          <span className="flex gap-2 items-center">
-            <img
-              src={user?.image || userDefaultImage}
-              className="h-10 rounded-full"
-            />
-            <p className="line-clamp-1">{user?.username}</p>
-          </span>
-          <p>{date_created && formatDate(date_created)}</p>
+      <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg relative">
+        <ImageModal src={image || ""} alt={title || ""} />
+        <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 flex flex-col justify-center items-center">
+          <div className="px-6 py-4 text-white flex flex-col justify-between h-full">
+            <div>
+              <div className="line-clamp-1 mb-2">{title}</div>
+              <div className="line-clamp-1">
+                {tags?.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="flex gap-2 items-center">
+                {is_public && (
+                  <img
+                    src={user?.image || userDefaultImage}
+                    className="h-10 rounded-full"
+                  />
+                )}
+                <p className="line-clamp-1">{user?.username}</p>
+              </span>
+              <p className="text-end">
+                {date_created && formatDate(date_created)}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
