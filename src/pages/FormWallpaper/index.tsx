@@ -1,5 +1,5 @@
 import WallpaperUpload from "../../components/WallpaperUpload";
-import WallpaperEdit from "../../components/WallpaperEdit";
+import WallpaperEdit from "../../components/Wallpapers/Wallpaper/WallpaperEdit";
 
 interface FormWallpaperProps {
   edit?: boolean;

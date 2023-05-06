@@ -2,11 +2,12 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { WallpaperType } from "../../../types";
 import { formatDate } from "../../../utils/scripts";
-import ImageModal from "../WallpaperModal";
+import ImageModal from "./WallpaperModal";
 import { useNavigate } from "react-router-dom";
 import api from "../../../api/api";
 import { toast } from "react-toastify";
-import ModalDeletion from "../../ModalDeletion";
+import ModalDeletion from "./ModalDeletion";
+import userDefaultImage from "../../../assets/user.png";
 
 export default function Wallpaper({
   id,
@@ -83,8 +84,14 @@ export default function Wallpaper({
             </span>
           ))}
         </div>
-        <div className="flex justify-between px-6 pb-4">
-          <p>{user?.username}</p>
+        <div className="flex justify-between items-center px-6 py-4">
+          <span className="flex gap-2 items-center">
+            <img
+              src={user?.image || userDefaultImage}
+              className="h-10 rounded-full"
+            />
+            <p className="line-clamp-1">{user?.username}</p>
+          </span>
           <p>{date_created && formatDate(date_created)}</p>
         </div>
       </div>
