@@ -22,7 +22,7 @@ function Router() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/user-wallpapers"
+            path="/user-wallpapers/:page?"
             element={
               <PrivateRoute>
                 <UserWallpapers />

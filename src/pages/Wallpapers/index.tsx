@@ -53,7 +53,11 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
           <Link
             to={
               Number(page) == 2
-                ? "/wallpapers"
+                ? !IsPublic
+                  ? "/user-wallpapers"
+                  : "/wallpapers"
+                : !IsPublic
+                ? `/user-wallpapers/${Number(page) - 1}`
                 : `/wallpapers/${Number(page) - 1}`
             }
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
@@ -63,7 +67,15 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
         )}
         {hasNextPage && (
           <Link
-            to={page ? `/wallpapers/${Number(page) + 1}` : "/wallpapers/2"}
+            to={
+              page
+                ? !IsPublic
+                  ? `/user-wallpapers/${Number(page) + 1}`
+                  : `/wallpapers/${Number(page) + 1}`
+                : !IsPublic
+                ? "/user-wallpapers/2"
+                : "/wallpapers/2"
+            }
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
           >
             Próxima
