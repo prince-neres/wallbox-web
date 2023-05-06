@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { selectUser } from "../redux/reducers/userSlice";
+import { selectUser } from "../store/user/userSlice";
 import { useSelector } from "react-redux";
 
 interface PrivateRouteProps {

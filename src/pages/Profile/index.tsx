@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, updateSuccess } from "../../redux/reducers/userSlice";
+import { selectUser, updateSuccess } from "../../store/user/userSlice";
 import { useState } from "react";
-import api from "../../api";
+import api from "../../api/api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import userDefaultImage from "../../assets/user.png";

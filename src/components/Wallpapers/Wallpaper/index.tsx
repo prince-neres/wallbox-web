@@ -4,7 +4,7 @@ import { WallpaperType } from "../../../types";
 import { formatDate } from "../../../utils/scripts";
 import ImageModal from "../WallpaperModal";
 import { useNavigate } from "react-router-dom";
-import api from "../../../api";
+import api from "../../../api/api";
 import { toast } from "react-toastify";
 import ModalDeletion from "../../ModalDeletion";
 

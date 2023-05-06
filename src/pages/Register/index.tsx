@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../redux/reducers/userApi";
-import { selectUser } from "../../redux/reducers/userSlice";
-import { AppDispatch } from "../../redux/store";
+import { register } from "../../store/user/userApi";
+import { selectUser } from "../../store/user/userSlice";
+import { AppDispatch } from "../../store/store";
 import Loader from "../../components/Loader";
 
 export default function RegisterForm() {

@@ -1,9 +1,7 @@
-import Wallpapers from "../../components/Wallpapers";
-
 export default function Home() {
   return (
     <div>
-      <Wallpapers IsPublic={true} />
+      <p>sobre</p>
     </div>
   );
 }

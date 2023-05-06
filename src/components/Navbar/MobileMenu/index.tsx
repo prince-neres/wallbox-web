@@ -1,7 +1,7 @@
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../../../redux/reducers/userSlice";
+import { logout, selectUser } from "../../../store/user/userSlice";
 
 function MobileMenu() {
   const location = useLocation();

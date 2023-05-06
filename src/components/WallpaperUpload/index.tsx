@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../../api";
+import api from "../../api/api";
 import TagsInput from "./TagInput";
 import FileInput from "./FileInput";
 import Loader from "../Loader";

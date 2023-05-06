@@ -1,6 +1,6 @@
 import axios from "axios";
-import { logout } from "../redux/reducers/userSlice";
-import store from "../redux/store";
+import { logout } from "../store/user/userSlice";
+import store from "../store/store";
 import { toast } from "react-toastify";
 
 const api = axios.create({

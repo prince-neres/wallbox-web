@@ -26,3 +26,9 @@ export interface UserType {
   userInfo?: UserInfoType;
   error?: string;
 }
+
+export interface PaginatedResponse {
+  wallpapers: WallpaperType[];
+  hasNextPage?: boolean;
+  hasPreviousPage?: boolean;
+}

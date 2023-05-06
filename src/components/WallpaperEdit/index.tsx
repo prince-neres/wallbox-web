@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../api/api";
 import TagsInput from "../WallpaperUpload/TagInput";
 import Loader from "../Loader";
 import { toast } from "react-toastify";

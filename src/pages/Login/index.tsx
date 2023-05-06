@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../redux/reducers/userApi";
-import { selectUser } from "../../redux/reducers/userSlice";
-import { AppDispatch } from "../../redux/store";
+import { login } from "../../store/user/userApi";
+import { selectUser } from "../../store/user/userSlice";
+import { AppDispatch } from "../../store/store";
 import Loader from "../../components/Loader";
 
 export default function LoginForm() {

@@ -7,7 +7,7 @@ import {
   registerRequest,
   registerSuccess,
 } from "./userSlice";
-import api from "../../api";
+import api from "../../api/api";
 
 export const login =
   (email: string, password: string) => async (dispatch: AppDispatch) => {
