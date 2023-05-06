@@ -1,6 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-type ModalProps = {
+type ModalDeletionProps = {
   title: string;
   onCancel: () => void;
   onConfirm: () => void;
@@ -10,7 +10,7 @@ export default function ModalDeletion({
   title,
   onCancel,
   onConfirm,
-}: ModalProps) {
+}: ModalDeletionProps) {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">

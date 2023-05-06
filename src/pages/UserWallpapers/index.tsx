@@ -1,4 +1,4 @@
-import Wallpapers from "../../components/Wallpapers";
+import Wallpapers from "../Wallpapers";
 
 export default function UserWallpapers() {
   return (

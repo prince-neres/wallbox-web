@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../../api/api";
-import TagsInput from "../../../WallpaperUpload/TagInput";
-import Loader from "../../../Loader";
+import api from "../../../api/api";
+import TagsInput from "../../WallpaperUpload/TagInput";
+import Loader from "../../Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
-import ImageModal from "../../../Wallpapers/Wallpaper/WallpaperModal";
+import ImageModal from "../../Wallpaper/WallpaperModal";
 
 function WallpaperEdit() {
   const [title, setTitle] = useState<string>("");

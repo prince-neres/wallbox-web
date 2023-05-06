@@ -1,13 +1,13 @@
 import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
-import { WallpaperType } from "../../../types";
-import { formatDate } from "../../../utils/scripts";
+import { WallpaperType } from "../../types";
+import { formatDate } from "../../utils/scripts";
 import ImageModal from "./WallpaperModal";
 import { useNavigate } from "react-router-dom";
-import api from "../../../api/api";
+import api from "../../api/api";
 import { toast } from "react-toastify";
 import ModalDeletion from "./ModalDeletion";
-import userDefaultImage from "../../../assets/user.png";
+import userDefaultImage from "../../assets/user.png";
 
 export default function Wallpaper({
   id,

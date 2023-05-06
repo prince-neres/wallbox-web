@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./private";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Base from "../pages/Base";
@@ -6,8 +7,7 @@ import Profile from "../pages/Profile";
 import FormWallpaper from "../pages/FormWallpaper";
 import UserWallpapers from "../pages/UserWallpapers";
 import Home from "../pages/Home";
-import PrivateRoute from "./private";
-import Wallpapers from "../components/Wallpapers";
+import Wallpapers from "../pages/Wallpapers";
 
 function Router() {
   return (

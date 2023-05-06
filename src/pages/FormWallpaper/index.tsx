@@ -1,14 +1,10 @@
 import WallpaperUpload from "../../components/WallpaperUpload";
-import WallpaperEdit from "../../components/Wallpapers/Wallpaper/WallpaperEdit";
+import WallpaperEdit from "../../components/Wallpaper/WallpaperEdit";
 
-interface FormWallpaperProps {
-  edit?: boolean;
-}
-
-export default function FormWallpaper(props: FormWallpaperProps) {
+export default function FormWallpaper({ edit }: { edit?: boolean }) {
   return (
     <div className="w-full flex justify-center items-center">
-      {props.edit ? <WallpaperEdit /> : <WallpaperUpload />}
+      {edit ? <WallpaperEdit /> : <WallpaperUpload />}
     </div>
   );
 }

@@ -1,17 +1,13 @@
-import Wallpaper from "./Wallpaper";
+import Wallpaper from "../../components/Wallpaper";
 import { WallpaperType } from "../../types";
 import { useState, useEffect } from "react";
-import SearchInput from "./SearchInput";
+import SearchInput from "../../components/SearchInput";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { getWallpapers } from "../../store/wallpapers/wallpapersApi";
 
-interface WallpaperProps {
-  IsPublic: boolean;
-}
-
-export default function Wallpapers(props: WallpaperProps) {
+export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   const { page } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -21,8 +17,8 @@ export default function Wallpapers(props: WallpaperProps) {
   );
 
   useEffect(() => {
-    dispatch(getWallpapers(props.IsPublic, searchQuery, page));
-  }, [page, props.IsPublic, searchQuery, dispatch]);
+    dispatch(getWallpapers(IsPublic, searchQuery, page));
+  }, [page, IsPublic, searchQuery, dispatch]);
 
   return (
     <div className="flex flex-col gap-5 items-center">
@@ -42,7 +38,7 @@ export default function Wallpapers(props: WallpaperProps) {
                 filename={wallpaper.filename}
                 date_created={wallpaper.date_created}
                 date_updated={wallpaper.date_updated}
-                is_public={props.IsPublic}
+                is_public={IsPublic}
               />
             ))}
           </div>
