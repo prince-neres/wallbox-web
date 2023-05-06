@@ -24,25 +24,23 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
     <div className="flex flex-col gap-5 items-center">
       <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {wallpapers?.length ? (
-        <>
-          <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
-            {wallpapers?.map((wallpaper: WallpaperType) => (
-              <Wallpaper
-                key={wallpaper.id}
-                id={wallpaper.id}
-                user={wallpaper.user}
-                image={wallpaper.image}
-                title={wallpaper.title}
-                description={wallpaper.description}
-                tags={wallpaper.tags}
-                filename={wallpaper.filename}
-                date_created={wallpaper.date_created}
-                date_updated={wallpaper.date_updated}
-                is_public={IsPublic}
-              />
-            ))}
-          </div>
-        </>
+        <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
+          {wallpapers?.map((wallpaper: WallpaperType) => (
+            <Wallpaper
+              key={wallpaper.id}
+              id={wallpaper.id}
+              user={wallpaper.user}
+              image={wallpaper.image}
+              title={wallpaper.title}
+              description={wallpaper.description}
+              tags={wallpaper.tags}
+              filename={wallpaper.filename}
+              date_created={wallpaper.date_created}
+              date_updated={wallpaper.date_updated}
+              is_public={IsPublic}
+            />
+          ))}
+        </div>
       ) : (
         <p className="text-gray-500 text-center">
           Nenhum wallpaper encontrado :(
