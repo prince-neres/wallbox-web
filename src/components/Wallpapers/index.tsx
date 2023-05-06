@@ -1,50 +1,36 @@
-import api from "../../api/api";
 import Wallpaper from "./Wallpaper";
-import { WallpaperType, PaginatedResponse } from "../../types";
+import { WallpaperType } from "../../types";
 import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { getWallpapers } from "../../store/wallpapers/wallpapersApi";
 
 interface WallpaperProps {
-  IsPublic?: boolean;
+  IsPublic: boolean;
 }
 
 export default function Wallpapers(props: WallpaperProps) {
   const { page } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
-  const [wallpapers, setWallpapers] = useState<PaginatedResponse>({
-    wallpapers: [],
-    hasPreviousPage: false,
-    hasNextPage: false,
-  });
-  const [hasPreviousPage, setHasPreviousPage] = useState(false);
-  const [hasNextPage, setHasNextPage] = useState(false);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const { wallpapers, hasPreviousPage, hasNextPage } = useSelector(
+    (state: RootState) => state.wallpapers.response
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await api.get(
-        searchQuery
-          ? `/${
-              props.IsPublic ? "wallpapers" : "user-wallpapers"
-            }?query=${searchQuery}&page=${page || 1}`
-          : `/${props.IsPublic ? "wallpapers" : "user-wallpapers"}?page=${
-              page || 1
-            }`
-      );
-      setHasPreviousPage(res.data.hasPreviousPage);
-      setHasNextPage(res.data.hasNextPage);
-      setWallpapers(res.data);
-    };
-    fetchData();
-  }, [page, props.IsPublic, searchQuery]);
+    dispatch(getWallpapers(props.IsPublic, searchQuery, page));
+  }, [page, props.IsPublic, searchQuery, dispatch]);
 
   return (
     <div className="flex flex-col gap-5 items-center">
       <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      {wallpapers?.wallpapers?.length ? (
+      {wallpapers?.length ? (
         <>
           <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
-            {wallpapers?.wallpapers?.map((wallpaper: WallpaperType) => (
+            {wallpapers?.map((wallpaper: WallpaperType) => (
               <Wallpaper
                 key={wallpaper.id}
                 id={wallpaper.id}
