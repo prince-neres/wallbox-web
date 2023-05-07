@@ -5,7 +5,6 @@ import api from "../../api/api";
 import TagsInput from "./TagInput";
 import FileInput from "./FileInput";
 import Loader from "../Loader";
-import ImageModal from "../Wallpaper/WallpaperModal";
 
 function ImageUpload() {
   const [image, setImage] = useState<File | null>(null);
@@ -54,14 +53,14 @@ function ImageUpload() {
     <div className="flex flex-col md:flex-row gap-5">
       {imageUrl && (
         <div className="w-64 md:w-96 sm:w-80">
-          <ImageModal alt={title} src={imageUrl} />{" "}
+          <img alt={title} src={imageUrl} />
         </div>
       )}
 
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
-        className="flex flex-col gap-5 w-80"
+        className="flex flex-col gap-5 w-64 sm:w-80"
         onKeyDown={handleKeyDown}
       >
         <input

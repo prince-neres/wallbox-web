@@ -11,7 +11,6 @@ import Loader from "../../components/Loader";
 export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   const { page } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
-
   const dispatch = useDispatch<AppDispatch>();
   const { wallpapers } = useSelector((state: RootState) => state);
   const { response, loading } = wallpapers;
@@ -21,7 +20,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   }, [page, IsPublic, searchQuery, dispatch]);
 
   return (
-    <div className="flex flex-col gap-5 items-center flex-grow">
+    <div className="flex flex-col gap-5 items-center flex-grow py-10">
       <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {loading ? (
         <div className="flex flex-grow justify-center items-center">

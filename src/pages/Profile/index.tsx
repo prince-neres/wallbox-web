@@ -71,8 +71,11 @@ export default function Profile() {
         >
           {isLoading && <Loader />} Salvar
         </button>
-        <p>Criado em: {userInfo?.date_created}</p>
-        <p>Última atualização: {userInfo?.date_updated}</p>
+
+        <div className="text-center">
+          <p>Criado em: {userInfo?.date_created}</p>
+          <p>Última atualização: {userInfo?.date_updated}</p>
+        </div>
       </form>
     </div>
   );

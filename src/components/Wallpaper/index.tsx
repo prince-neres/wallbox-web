@@ -1,15 +1,16 @@
 import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
-import { useState } from "react";
+import React, { useState } from "react";
 import { WallpaperType } from "../../types";
 import { formatDate } from "../../utils/scripts";
-import ImageModal from "./WallpaperModal";
+import ModalWallpaper from "./ModalWallpaper";
 import { useNavigate } from "react-router-dom";
+
 import api from "../../api/api";
 import { toast } from "react-toastify";
 import ModalDeletion from "./ModalDeletion";
 import userDefaultImage from "../../assets/user.png";
 
-export default function Wallpaper({
+const Wallpaper = ({
   id,
   image,
   title,
@@ -18,8 +19,9 @@ export default function Wallpaper({
   user,
   date_created,
   is_public,
-}: WallpaperType) {
+}: WallpaperType) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [showWallpaperModel, setShowWallpaperModel] = useState(false);
   const navigate = useNavigate();
 
   const handleWallpaperEdit = () => {
@@ -46,6 +48,13 @@ export default function Wallpaper({
           onConfirm={handleDelete}
         />
       )}
+      {showWallpaperModel && (
+        <ModalWallpaper
+          src={image || ""}
+          alt={title || ""}
+          onCancel={() => setShowWallpaperModel(false)}
+        />
+      )}
       {!is_public && (
         <span className="flex justify-end gap-3 mb-3">
           <span
@@ -65,8 +74,16 @@ export default function Wallpaper({
           </span>
         </span>
       )}
-      <div className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg relative">
-        <ImageModal src={image || ""} alt={title || ""} />
+      <div
+        className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg relative cursor-pointer"
+        onClick={() => setShowWallpaperModel(true)}
+      >
+        <img
+          src={image}
+          alt={title}
+          className="cursor-pointer select-none aspect-video"
+        />
+
         <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 flex flex-col justify-center items-center">
           <div className="px-6 py-4 text-white flex flex-col justify-between h-full">
             <div>
@@ -101,4 +118,6 @@ export default function Wallpaper({
       </div>
     </div>
   );
-}
+};
+
+export default Wallpaper;

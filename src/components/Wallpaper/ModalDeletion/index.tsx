@@ -16,15 +16,9 @@ export default function ModalDeletion({
       <div className="flex items-center justify-center min-h-screen">
         <div
           className="fixed inset-0 bg-black bg-opacity-80 transition-opacity"
-          aria-hidden="true"
           onClick={onCancel}
         ></div>
-        <div
-          className=" rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full md:w-1/2 lg:w-1/3"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-headline"
-        >
+        <div className="rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full md:w-1/2 lg:w-1/3">
           <div className="p-6">
             <div className="flex items-center justify-between">
               <h3 className=" text-white">{title}</h3>

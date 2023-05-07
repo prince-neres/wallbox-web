@@ -5,7 +5,6 @@ import Loader from "../../Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
-import ImageModal from "../../Wallpaper/WallpaperModal";
 
 function WallpaperEdit() {
   const [title, setTitle] = useState<string>("");
@@ -61,9 +60,11 @@ function WallpaperEdit() {
 
   return (
     <div className="flex flex-col md:flex-row gap-5">
-      <div className="w-64 md:w-96 sm:w-80">
-        <ImageModal alt={title} src={image} />
-      </div>
+      {image && (
+        <div className="w-64 md:w-96 sm:w-80">
+          <img alt={title} src={image} />
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
