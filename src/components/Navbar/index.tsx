@@ -15,9 +15,9 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center w-full h-auto justify-between sm:justify-evenly text-center bg-black text-white">
-      <Link to="/" className="hidden sm:block h-7 w-auto">
-        <Logo w={7} />
+    <nav className="flex items-center w-full h-auto justify-between sm:justify-evenly text-center">
+      <Link to="/" className="hidden sm:block p-2 bg-black">
+        <Logo w={6} />
       </Link>
       <div className="hidden sm:flex sm:flex-row p-8">
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>

@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -20,5 +20,5 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

@@ -59,7 +59,7 @@ function WallpaperEdit() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-5">
+    <div className="flex flex-col md:flex-row py-10 gap-5">
       {image && (
         <div className="w-64 md:w-96 sm:w-80">
           <img alt={title} src={image} />

@@ -50,7 +50,7 @@ function ImageUpload() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-5">
+    <div className="flex flex-col md:flex-row gap-5 py-10">
       {imageUrl && (
         <div className="w-64 md:w-96 sm:w-80">
           <img alt={title} src={imageUrl} />
