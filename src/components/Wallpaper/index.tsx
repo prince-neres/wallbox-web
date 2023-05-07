@@ -56,7 +56,7 @@ const Wallpaper = ({
         />
       )}
       {!is_public && (
-        <span className="flex justify-end gap-3 mb-3">
+        <span className="flex justify-end gap-3 mb-3 px-6">
           <span
             className="flex gap-1 text-blue-500 items-center cursor-pointer"
             onClick={handleWallpaperEdit}
@@ -75,7 +75,7 @@ const Wallpaper = ({
         </span>
       )}
       <div
-        className="mx-5 sm:mx-0 sm:w-96 rounded shadow-lg relative cursor-pointer"
+        className="mx-5 sm:mx-0 sm:w-96 shadow-lg relative cursor-pointer"
         onClick={() => setShowWallpaperModel(true)}
       >
         <img

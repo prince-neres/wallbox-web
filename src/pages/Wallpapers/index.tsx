@@ -63,7 +63,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                     ? `/user-wallpapers/${Number(page) - 1}`
                     : `/wallpapers/${Number(page) - 1}`
                 }
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 cursor-pointer"
               >
                 Anterior
               </Link>
@@ -79,7 +79,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                     ? "/user-wallpapers/2"
                     : "/wallpapers/2"
                 }
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 cursor-pointer"
               >
                 Próxima
               </Link>

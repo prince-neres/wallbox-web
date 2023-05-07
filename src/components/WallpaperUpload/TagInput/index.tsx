@@ -31,13 +31,13 @@ const TagsInput = ({ tags, setTags }: TagsInputProps) => {
         type="text"
         onKeyUp={(event) => (event.key === "Enter" ? addTags(event) : null)}
         placeholder="'Enter' para adicionar as tags"
-        className="p-3 mb-3 rounded border-black border-2 text-black w-full"
+        className="p-3 mb-3 border-black border-2 text-black w-full outline-none"
       />
       <ul className="flex flex-wrap py-2 items-center justify-center">
         {tags.map((tag, index) => (
           <li
             key={index}
-            className="bg-gray-200 text-gray-800 rounded-full flex items-center py-2 px-3 mb-2 mr-2"
+            className="bg-gray-200 text-gray-800 rounded-full flex items-center py-2 px-3 mb-2 mr-2 "
           >
             <span>{tag}</span>
             <span

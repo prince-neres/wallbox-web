@@ -21,7 +21,7 @@ export default function FileInput({
   };
 
   return (
-    <label className="flex justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+    <label className="flex justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
       <span className="flex flex-col justify-center items-center gap-3">
         <ArrowUpTrayIcon className="h-12 w-12 text-gray-600" />
         <span className="font-medium text-gray-600">

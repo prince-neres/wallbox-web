@@ -57,16 +57,17 @@ export default function Profile() {
         onSubmit={handleSaveChanges}
       >
         <img src={imageUrl} className="h-36 w-36 bg-white rounded-full" />
-        <input type="file" onChange={handleImagemChange} />
+        <input className="w-60" type="file" onChange={handleImagemChange} />
+
         <input
-          className="p-3 rounded border-black border-2 text-black w-60"
+          className="p-3  outline-none border-black border-2 text-black w-60"
           type="text"
           placeholder="Nome de usuário"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <button
-          className="w-60 font-bold bg-green-500 p-3 rounded text-white flex flex-row items-center justify-center"
+          className="w-60 font-bold bg-green-500 hover:bg-green-700 p-3 text-white flex flex-row items-center justify-center duration-200"
           type="submit"
         >
           {isLoading && <Loader />} Salvar
