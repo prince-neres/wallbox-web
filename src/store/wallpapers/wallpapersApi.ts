@@ -13,9 +13,7 @@ export const getWallpapers =
       dispatch(wallpapersRequest());
       const { data } = await api.get(
         query
-          ? `/${
-              publics ? "wallpapers" : "user-wallpapers"
-            }?query=${query}&page=${page || 1}`
+          ? `/${publics ? "wallpapers" : "user-wallpapers"}?query=${query}`
           : `/${publics ? "wallpapers" : "user-wallpapers"}?page=${page || 1}`
       );
       dispatch(wallpapersRequestSuccess(data));
