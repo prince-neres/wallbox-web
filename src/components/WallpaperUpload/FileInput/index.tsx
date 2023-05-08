@@ -20,8 +20,25 @@ export default function FileInput({
     }
   };
 
+  const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+    const imagemArrastada = event.dataTransfer.files?.[0];
+    if (imagemArrastada) {
+      setImage(imagemArrastada);
+      setImageUrl(URL.createObjectURL(imagemArrastada));
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+  };
+
   return (
-    <label className="flex justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+    <label
+      className="flex justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
       <span className="flex flex-col justify-center items-center gap-3">
         <ArrowUpTrayIcon className="h-12 w-12 text-gray-600" />
         <span className="font-medium text-gray-600">

@@ -1,6 +1,6 @@
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
-  const formattedDate = `${date.toLocaleDateString()} às ${date.toLocaleTimeString()}`;
+  const formattedDate = `${date.toLocaleDateString()}`;
   return formattedDate;
 };
 

@@ -20,7 +20,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   }, [page, IsPublic, searchQuery, dispatch]);
 
   return (
-    <div className="flex flex-col gap-5 items-center flex-grow py-10">
+    <div className="flex flex-col gap-5 items-center flex-grow py-5">
       <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {loading ? (
         <div className="flex flex-grow justify-center items-center">
@@ -63,7 +63,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                     ? `/user-wallpapers/${Number(page) - 1}`
                     : `/wallpapers/${Number(page) - 1}`
                 }
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 cursor-pointer"
+                className="bg-cyan-600 hover:bg-cyan-500 duration-200 text-white font-bold p-3 cursor-pointer"
               >
                 Anterior
               </Link>
@@ -79,7 +79,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                     ? "/user-wallpapers/2"
                     : "/wallpapers/2"
                 }
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 cursor-pointer"
+                className="bg-cyan-600 hover:bg-cyan-500 duration-200 text-white font-bold p-3 cursor-pointer"
               >
                 Próxima
               </Link>
