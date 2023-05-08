@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 export default function ToggleTheme() {
   useEffect(() => {
-    const darkMode = JSON.parse(localStorage.getItem("darkMode") || "");
+    const darkMode = JSON.parse(localStorage.getItem("darkMode") || "{}");
     darkMode
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
