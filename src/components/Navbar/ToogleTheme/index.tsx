@@ -19,7 +19,7 @@ export default function ToggleTheme() {
   };
 
   return (
-    <div className="h-10 rounded-full pr-8 sm:p-0 select-none">
+    <div className="h-10 rounded-full mx-5 sm:mx-10 select-none">
       <motion.div
         className="container"
         whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 1 } }}

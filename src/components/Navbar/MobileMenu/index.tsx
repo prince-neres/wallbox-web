@@ -1,4 +1,4 @@
-import { Bars3Icon } from "@heroicons/react/24/solid";
+import { Bars3Icon } from "@heroicons/react/20/solid";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../../store/user/userSlice";
@@ -19,10 +19,7 @@ function MobileMenu() {
 
   return (
     <>
-      <div
-        className="block sm:hidden items-center p-5"
-        onClick={mobileMenuActive}
-      >
+      <div className=" sm:hidden items-center p-5" onClick={mobileMenuActive}>
         <button className="outline-none mobile-menu-button hover:text-dark-orange duration-200">
           <Bars3Icon className="h-10" />
         </button>
@@ -33,13 +30,13 @@ function MobileMenu() {
             to={"/"}
             className={location.pathname === "/" ? "font-bold" : ""}
           >
-            <p className="text-center">Ínicio</p>
+            <p className="text-center">Sobre</p>
           </Link>
           <Link
             to={"/wallpapers"}
             className={location.pathname === "/wallpapers" ? "font-bold" : ""}
           >
-            <p className="text-center pt-2">Wallpapers</p>
+            <p className="text-center py-2">Wallpapers</p>
           </Link>
           {userInfo?.token ? (
             <>
@@ -49,7 +46,7 @@ function MobileMenu() {
                   location.pathname === "/user-wallpapers" ? "font-bold" : ""
                 }
               >
-                <p className="text-center pt-2">Meus</p>
+                <p className="text-center py-2">Meus</p>
               </Link>
               <Link
                 to={"/form-wallpaper"}
@@ -57,17 +54,17 @@ function MobileMenu() {
                   location.pathname === "/form-wallpaper" ? "font-bold" : ""
                 }
               >
-                <p className="text-center pt-2">Enviar</p>
+                <p className="text-center py-2">Enviar</p>
               </Link>
               <Link
                 to={"/profile"}
                 className={location.pathname === "/profile" ? "font-bold" : ""}
               >
-                <p className="text-center pt-2">Perfil</p>
+                <p className="text-center py-2">Perfil</p>
               </Link>
 
               <button onClick={handleLogout}>
-                <p className="text-center pt-2">Sair</p>
+                <p className="text-center py-2">Sair</p>
               </button>
             </>
           ) : (
@@ -75,7 +72,7 @@ function MobileMenu() {
               to={"/login"}
               className={location.pathname === "/login" ? "font-bold" : ""}
             >
-              <p className="text-center pt-2">Login</p>
+              <p className="text-center py-2">Login</p>
             </Link>
           )}
         </div>

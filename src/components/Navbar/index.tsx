@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../store/user/userSlice";
 import ToggleTheme from "./ToogleTheme";
@@ -9,10 +10,26 @@ function Navbar() {
   const location = useLocation();
   const dispatch = useDispatch();
   const { userInfo } = useSelector(selectUser);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <nav className="flex items-center w-full h-auto justify-between sm:justify-around text-center">
@@ -21,7 +38,7 @@ function Navbar() {
       </Link>
       <div className="hidden sm:flex sm:flex-row p-8">
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
-          <p className="flex pr-5">Ínicio</p>
+          <p className="flex pr-5">Sobre</p>
         </Link>
         <Link
           to="/wallpapers"
@@ -66,7 +83,7 @@ function Navbar() {
           </Link>
         )}
       </div>
-      <MobileMenu />
+      {isMobile && <MobileMenu />}
       <ToggleTheme />
     </nav>
   );
