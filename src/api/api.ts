@@ -4,7 +4,7 @@ import store from "../store/store";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: "https://wallbox-api.onrender.com/api/",
 });
 
 api.interceptors.request.use(
