@@ -2,6 +2,9 @@
 
 Projeto feito como meio para práticar habilidades.
 
+## Repositório da API: 
+https://github.com/prince-neres/wallbox-api.git
+
 ## Como rodar frontend passo a passo:
 
 1. Necessário rodar banckend antes, repositório: `git clone https://github.com/prince-neres/wallbox-api.git`
