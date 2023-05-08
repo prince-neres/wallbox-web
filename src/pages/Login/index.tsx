@@ -20,7 +20,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (userInfo.userInfo?.token) {
-      navigate("/");
+      navigate("/wallpapers");
     }
   }, [navigate, userInfo]);
 

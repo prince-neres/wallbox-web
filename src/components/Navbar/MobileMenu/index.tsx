@@ -35,7 +35,12 @@ function MobileMenu() {
           >
             <p className="text-center">Ínicio</p>
           </Link>
-
+          <Link
+            to={"/wallpapers"}
+            className={location.pathname === "/wallpapers" ? "font-bold" : ""}
+          >
+            <p className="text-center pt-2">Wallpapers</p>
+          </Link>
           {userInfo?.token ? (
             <>
               <Link

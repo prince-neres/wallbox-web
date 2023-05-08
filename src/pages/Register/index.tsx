@@ -17,7 +17,7 @@ export default function RegisterForm() {
 
   useEffect(() => {
     if (userInfo.userInfo?.token) {
-      navigate("/");
+      navigate("/wallpapers");
     }
   }, [navigate, userInfo]);
 

@@ -32,7 +32,7 @@ function ImageUpload() {
           },
         });
         toast.success("Imagem enviada com sucesso.", { autoClose: 3000 });
-        navigate("/");
+        navigate("/wallpapers");
       } catch (error) {
         toast.error("Erro ao enviar imagem.", { autoClose: 3000 });
       } finally {
