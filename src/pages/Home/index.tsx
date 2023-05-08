@@ -9,10 +9,9 @@ export default function Home() {
         </div>
         <p className="indent-8 text-justify">
           O WallBox é uma aplicação de compartilhamento de papéis de parede para
-          desktop qu permite que os usuários façam upload e compartilhem suas
-          imagens favoritas para uso pessoal e de outras pessoas. Os usuários
-          podem criar perfis, pesquisar por papéis de parede por tag ou
-          palavra-chave.
+          desktop que permite aos usuários fazerem upload e compartilhar seus
+          papéis de parede favoritos. Os usuários podem criar perfis, pesquisar
+          por papéis de parede, por tag ou palavra-chave.
         </p>
       </div>
     </div>

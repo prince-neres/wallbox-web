@@ -1,5 +1,6 @@
 import { ArrowDownTrayIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { motion } from "framer-motion";
 
 type ModalDeletionProps = {
   alt: string;
@@ -28,12 +29,23 @@ export default function ModalWallpaper({
           className="w-8 h-8 text-white cursor-pointer hover:text-gray-500 duration-200"
           onClick={onCancel}
         />
-        <LazyLoadImage
-          src={src}
-          alt={alt}
-          effect="blur"
-          className="select-none max-h-[600px] img-lazy"
-        />
+        <motion.div
+          className="box"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          <LazyLoadImage
+            src={src}
+            alt={alt}
+            effect="blur"
+            className="select-none max-h-[600px] img-lazy"
+          />
+        </motion.div>
         <div className="w-36 flex justify-center items-center gap-2 group duration-200">
           <ArrowDownTrayIcon className="text-white h-5 w-5 group-hover:text-gray-400 duration-200" />
           <p

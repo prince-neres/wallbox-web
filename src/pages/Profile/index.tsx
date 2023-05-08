@@ -5,6 +5,7 @@ import api from "../../api/api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import userDefaultImage from "../../assets/user.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -56,7 +57,10 @@ export default function Profile() {
         className="flex flex-col gap-5 items-center	"
         onSubmit={handleSaveChanges}
       >
-        <img src={imageUrl} className="h-36 w-36 bg-white rounded-full" />
+        <LazyLoadImage
+          src={imageUrl}
+          className="h-36 w-36 bg-white rounded-full"
+        />
         <input className="w-60" type="file" onChange={handleImagemChange} />
 
         <input
