@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function Logo({ w }: { w: number }) {
+export default function Logo({ w }: { w?: number }) {
   return (
     <motion.div
       className="box cursor-pointer p-3 bg-black rounded"

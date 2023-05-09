@@ -34,7 +34,7 @@ function Navbar() {
   return (
     <nav className="flex items-center w-full h-auto justify-between sm:justify-around text-center">
       <Link to="/" className="hidden sm:block">
-        <Logo w={6} />
+        <Logo w={5} />
       </Link>
       <div className="hidden sm:flex sm:flex-row p-8">
         <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>

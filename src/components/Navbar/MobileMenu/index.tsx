@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../../store/user/userSlice";
 import { useCycle } from "framer-motion";
 import { motion } from "framer-motion";
+import Logo from "../Logo";
 
 function MobileMenu() {
   const location = useLocation();
@@ -28,12 +29,12 @@ function MobileMenu() {
 
   return (
     <>
-      <div className=" sm:hidden items-center p-5">
+      <div className=" sm:hidden items-center">
         <ToggleButton isOpen={isOpen} toggle={() => toggleOpen()} />
       </div>
       <div>
         <div className="sm:hidden flex-col py-10 mobile-menu">
-          {isOpen && (
+          {isOpen ? (
             <motion.div
               initial="closed"
               animate="open"
@@ -96,6 +97,10 @@ function MobileMenu() {
                 </Link>
               )}
             </motion.div>
+          ) : (
+            <div className="w-auto">
+              <Logo w={5} />
+            </div>
           )}
         </div>
       </div>
