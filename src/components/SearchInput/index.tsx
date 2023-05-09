@@ -8,12 +8,14 @@ export default function SearchInput({
   setSearchQuery,
 }: SearchInputProps) {
   return (
-    <input
-      className="mx-5 sm:w-96 p-3 rounded outline-none text-black border-2 border-black"
-      type="text"
-      placeholder="Procurar"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-    />
+    <div className="px-5 w-full flex justify-center">
+      <input
+        className=" w-full sm:w-96 p-3 rounded outline-none text-black border-2 border-black"
+        type="text"
+        placeholder="Procurar"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </div>
   );
 }
