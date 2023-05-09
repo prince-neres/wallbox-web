@@ -1,4 +1,3 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { WallpaperType } from "../../types";
 import { formatDate } from "../../utils/scripts";
@@ -8,6 +7,7 @@ import api from "../../api/api";
 import { toast } from "react-toastify";
 import ModalDeletion from "./ModalDeletion";
 import userDefaultImage from "../../assets/user.png";
+import WallpaperActions from "./WallpaperActions";
 
 const Wallpaper = ({
   id,
@@ -55,23 +55,10 @@ const Wallpaper = ({
         />
       )}
       {!is_public && (
-        <span className="flex justify-end gap-3 mb-3 px-6">
-          <span
-            className="flex gap-1 text-blue-500 items-center cursor-pointer"
-            onClick={handleWallpaperEdit}
-          >
-            <PencilIcon className="h-4 w-4" title="Editar" />
-            <p>Editar</p>
-          </span>
-
-          <span
-            className="flex gap-1 text-red-500 items-center cursor-pointer"
-            onClick={() => setShowDeleteConfirmation(true)}
-          >
-            <TrashIcon className="h-4 w-4" title="Remover" />
-            <p>Remover</p>
-          </span>
-        </span>
+        <WallpaperActions
+          handleWallpaperEdit={handleWallpaperEdit}
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+        />
       )}
       <div
         className="mx-5 sm:mx-0 sm:w-96 relative cursor-pointer hover:scale-105 duration-100"
