@@ -104,7 +104,7 @@ const Wallpaper = ({
                 {is_public && (
                   <img
                     src={user?.image || userDefaultImage}
-                    className="h-10 rounded-full"
+                    className="h-10 w-10 rounded-full"
                   />
                 )}
                 <p className="line-clamp-1">{user?.username}</p>
