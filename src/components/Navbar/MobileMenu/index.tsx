@@ -1,79 +1,101 @@
-import { Bars3Icon } from "@heroicons/react/20/solid";
+import ToggleButton from "./ToogleButton";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../../store/user/userSlice";
+import { useCycle } from "framer-motion";
+import { motion } from "framer-motion";
 
 function MobileMenu() {
   const location = useLocation();
   const dispatch = useDispatch();
   const { userInfo } = useSelector(selectUser);
+  const [isOpen, toggleOpen] = useCycle(false, true);
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  const mobileMenuActive = () => {
-    const menu = document.querySelector(".mobile-menu");
-    menu?.classList.toggle("hidden");
+  const variants = {
+    open: {
+      opacity: 1,
+      y: 0,
+    },
+    closed: {
+      opacity: 0,
+      y: -10,
+    },
   };
 
   return (
     <>
-      <div className=" sm:hidden items-center p-5" onClick={mobileMenuActive}>
-        <button className="outline-none mobile-menu-button hover:text-dark-orange duration-200">
-          <Bars3Icon className="h-10" />
-        </button>
+      <div className=" sm:hidden items-center p-5">
+        <ToggleButton isOpen={isOpen} toggle={() => toggleOpen()} />
       </div>
       <div>
         <div className="sm:hidden flex-col py-5 mobile-menu">
-          <Link
-            to={"/"}
-            className={location.pathname === "/" ? "font-bold" : ""}
-          >
-            <p className="text-center">Sobre</p>
-          </Link>
-          <Link
-            to={"/wallpapers"}
-            className={location.pathname === "/wallpapers" ? "font-bold" : ""}
-          >
-            <p className="text-center py-2">Wallpapers</p>
-          </Link>
-          {userInfo?.token ? (
-            <>
-              <Link
-                to={"/user-wallpapers"}
-                className={
-                  location.pathname === "/user-wallpapers" ? "font-bold" : ""
-                }
-              >
-                <p className="text-center py-2">Meus</p>
-              </Link>
-              <Link
-                to={"/form-wallpaper"}
-                className={
-                  location.pathname === "/form-wallpaper" ? "font-bold" : ""
-                }
-              >
-                <p className="text-center py-2">Enviar</p>
-              </Link>
-              <Link
-                to={"/profile"}
-                className={location.pathname === "/profile" ? "font-bold" : ""}
-              >
-                <p className="text-center py-2">Perfil</p>
-              </Link>
-
-              <button onClick={handleLogout}>
-                <p className="text-center py-2">Sair</p>
-              </button>
-            </>
-          ) : (
-            <Link
-              to={"/login"}
-              className={location.pathname === "/login" ? "font-bold" : ""}
+          {isOpen && (
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={variants}
             >
-              <p className="text-center py-2">Login</p>
-            </Link>
+              <Link
+                to={"/"}
+                className={location.pathname === "/" ? "font-bold" : ""}
+              >
+                <p className="text-center">Sobre</p>
+              </Link>
+              <Link
+                to={"/wallpapers"}
+                className={
+                  location.pathname === "/wallpapers" ? "font-bold" : ""
+                }
+              >
+                <p className="text-center p-2">Wallpapers</p>
+              </Link>
+              {userInfo?.token ? (
+                <>
+                  <Link
+                    to={"/user-wallpapers"}
+                    className={
+                      location.pathname === "/user-wallpapers"
+                        ? "font-bold"
+                        : ""
+                    }
+                  >
+                    <p className="text-center p-2">Meus</p>
+                  </Link>
+                  <Link
+                    to={"/form-wallpaper"}
+                    className={
+                      location.pathname === "/form-wallpaper" ? "font-bold" : ""
+                    }
+                  >
+                    <p className="text-center p-2">Enviar</p>
+                  </Link>
+                  <Link
+                    to={"/profile"}
+                    className={
+                      location.pathname === "/profile" ? "font-bold" : ""
+                    }
+                  >
+                    <p className="text-center p-2">Perfil</p>
+                  </Link>
+
+                  <button onClick={handleLogout}>
+                    <p className="text-center p-2">Sair</p>
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to={"/login"}
+                  className={location.pathname === "/login" ? "font-bold" : ""}
+                >
+                  <p className="text-center p-2">Login</p>
+                </Link>
+              )}
+            </motion.div>
           )}
         </div>
       </div>
