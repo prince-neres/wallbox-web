@@ -35,7 +35,7 @@ export default function FileInput({
 
   return (
     <label
-      className="flex rounded justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"
+      className=" text-center flex rounded justify-center w-full p-4 transition bg-white border-2 border-gray-300 border-dashed appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
@@ -48,7 +48,9 @@ export default function FileInput({
         {image && (
           <div className="flex flex-col justify-center items-center">
             <span className="text-blue-500 line-clamp-1">{image?.name}</span>
-            <span className="text-blue-500">{convertToMB(image?.size)} mb</span>
+            <span className="text-blue-500 line-clamp-1">
+              {convertToMB(image?.size)} mb
+            </span>
           </div>
         )}
       </span>
