@@ -40,7 +40,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   }, [page, IsPublic, searchQuery, dispatch]);
 
   return (
-    <div className="flex flex-col gap-5 items-center flex-grow py-5">
+    <div className="flex flex-col gap-5 items-center flex-grow py-5 w-full">
       <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {loading ? (
         <div className="flex flex-grow justify-center items-center">
