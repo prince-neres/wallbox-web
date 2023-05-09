@@ -32,7 +32,7 @@ function MobileMenu() {
         <ToggleButton isOpen={isOpen} toggle={() => toggleOpen()} />
       </div>
       <div>
-        <div className="sm:hidden flex-col py-5 mobile-menu">
+        <div className="sm:hidden flex-col py-10 mobile-menu">
           {isOpen && (
             <motion.div
               initial="closed"
@@ -52,7 +52,7 @@ function MobileMenu() {
                   location.pathname === "/wallpapers" ? "font-bold" : ""
                 }
               >
-                <p className="text-center p-2">Wallpapers</p>
+                <p className="text-center p-1">Wallpapers</p>
               </Link>
               {userInfo?.token ? (
                 <>
@@ -64,7 +64,7 @@ function MobileMenu() {
                         : ""
                     }
                   >
-                    <p className="text-center p-2">Meus</p>
+                    <p className="text-center p-1">Meus</p>
                   </Link>
                   <Link
                     to={"/form-wallpaper"}
@@ -72,7 +72,7 @@ function MobileMenu() {
                       location.pathname === "/form-wallpaper" ? "font-bold" : ""
                     }
                   >
-                    <p className="text-center p-2">Enviar</p>
+                    <p className="text-center p-1">Enviar</p>
                   </Link>
                   <Link
                     to={"/profile"}
@@ -80,11 +80,11 @@ function MobileMenu() {
                       location.pathname === "/profile" ? "font-bold" : ""
                     }
                   >
-                    <p className="text-center p-2">Perfil</p>
+                    <p className="text-center p-1">Perfil</p>
                   </Link>
 
                   <button onClick={handleLogout}>
-                    <p className="text-center p-2">Sair</p>
+                    <p className="text-center p-1">Sair</p>
                   </button>
                 </>
               ) : (

@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <nav className="flex items-center w-full h-auto justify-between sm:justify-around text-center">
-      <Link to="/" className="hidden sm:block p-2 bg-black">
+      <Link to="/" className="hidden sm:block">
         <Logo w={6} />
       </Link>
       <div className="hidden sm:flex sm:flex-row p-8">

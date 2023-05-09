@@ -76,7 +76,7 @@ function WallpaperEdit() {
           type="text"
           placeholder="Título"
           onChange={(e) => setTitle(e.target.value)}
-          className="p-3 border-black border-2 text-black outline-none"
+          className="p-3 rounded border-black border-2 text-black outline-none"
         />
 
         <input
@@ -84,13 +84,13 @@ function WallpaperEdit() {
           type="text"
           placeholder="Descrição"
           onChange={(e) => setDescription(e.target.value)}
-          className="p-3 border-black border-2 text-black outline-none"
+          className="p-3 rounded border-black border-2 text-black outline-none"
         />
 
         <TagsInput tags={tags} setTags={setTags} />
 
         <button
-          className="font-bold bg-green-500 hover:bg-green-700 p-3 text-white flex flex-row items-center justify-center duration-200"
+          className="font-bold rounded bg-green-500 hover:bg-green-700 p-3 text-white flex flex-row items-center justify-center duration-200"
           type="submit"
         >
           {isLoading ? <Loader /> : "Salvar"}

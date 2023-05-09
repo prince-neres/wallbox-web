@@ -68,7 +68,7 @@ function ImageUpload() {
           type="text"
           placeholder="Título"
           onChange={(e) => setTitle(e.target.value)}
-          className="p-3  outline-none border-black border-2 text-black"
+          className="p-3 rounded outline-none border-black border-2 text-black"
         />
 
         <input
@@ -76,7 +76,7 @@ function ImageUpload() {
           type="text"
           placeholder="Descrição"
           onChange={(e) => setDescription(e.target.value)}
-          className="p-3  outline-none border-black border-2 text-black"
+          className="p-3 rounded outline-none border-black border-2 text-black"
         />
 
         <TagsInput tags={tags} setTags={setTags} />
@@ -88,7 +88,7 @@ function ImageUpload() {
         />
 
         <button
-          className="font-bold bg-green-500 hover:bg-green-700 p-3 text-white flex flex-row items-center justify-center duration-200"
+          className="font-bold rounded bg-green-500 hover:bg-green-700 p-3 text-white flex flex-row items-center justify-center duration-200"
           type="submit"
         >
           {isLoading ? <Loader /> : "Enviar"}

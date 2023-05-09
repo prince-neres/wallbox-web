@@ -9,7 +9,7 @@ export default function SearchInput({
 }: SearchInputProps) {
   return (
     <input
-      className="mx-5 sm:w-96 p-3 outline-none text-black border-2 border-black"
+      className="mx-5 sm:w-96 p-3 rounded outline-none text-black border-2 border-black"
       type="text"
       placeholder="Procurar"
       value={searchQuery}

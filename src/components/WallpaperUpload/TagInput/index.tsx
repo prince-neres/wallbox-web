@@ -31,7 +31,7 @@ const TagsInput = ({ tags, setTags }: TagsInputProps) => {
         type="text"
         onKeyUp={(event) => (event.key === "Enter" ? addTags(event) : null)}
         placeholder="Pressione ENTER para adicionar tags"
-        className="p-3 mb-3 border-black border-2 text-black w-full outline-none"
+        className="p-3 rounded mb-3 border-black border-2 text-black w-full outline-none"
       />
       <ul className="flex flex-wrap py-2 items-center justify-center">
         {tags.map((tag, index) => (

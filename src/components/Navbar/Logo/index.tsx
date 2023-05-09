@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Logo({ w }: { w: number }) {
   return (
     <motion.div
-      className="box cursor-pointer"
+      className="box cursor-pointer p-3 bg-black rounded"
       whileHover={{ scale: 1.1 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
     >
