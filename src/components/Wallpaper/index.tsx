@@ -8,7 +8,6 @@ import api from "../../api/api";
 import { toast } from "react-toastify";
 import ModalDeletion from "./ModalDeletion";
 import userDefaultImage from "../../assets/user.png";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Wallpaper = ({
   id,
@@ -75,14 +74,13 @@ const Wallpaper = ({
         </span>
       )}
       <div
-        className="mx-5 sm:mx-0 sm:w-96 relative cursor-pointer"
+        className="mx-5 sm:mx-0 sm:w-96 relative cursor-pointer hover:scale-105 duration-100"
         onClick={() => setShowWallpaperModel(true)}
       >
-        <LazyLoadImage
+        <img
           src={image}
           alt={title}
-          effect="blur"
-          className="cursor-pointer select-none aspect-video"
+          className="cursor-pointer select-none aspect-video "
         />
 
         <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 duration-200 bg-black backdrop-blur-sm bg-opacity-50">
