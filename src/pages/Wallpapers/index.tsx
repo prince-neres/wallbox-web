@@ -10,30 +10,13 @@ import Loader from "../../components/Loader";
 import { motion } from "framer-motion";
 import NextAndPreviousButtons from "../../components/NextAndPreviousButtons";
 
-const container = {
-  visible: {
-    scale: 1,
-    transition: {
-      delayChildren: 0.8,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
-
 export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   const { page } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { wallpapers } = useSelector((state: RootState) => state);
   const { response, loading } = wallpapers;
+  const hasButtons = response?.hasNextPage || response?.hasPreviousPage;
 
   useEffect(() => {
     dispatch(getWallpapers(IsPublic, searchQuery, page));
@@ -64,7 +47,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
           {response.wallpapers?.length ? (
             <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
               {response.wallpapers?.map((wallpaper: WallpaperType, index) => (
-                <motion.li key={index} className="item" variants={item}>
+                <motion.li key={index} variants={item}>
                   <Wallpaper
                     key={wallpaper.id}
                     id={wallpaper.id}
@@ -80,12 +63,14 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                   />
                 </motion.li>
               ))}
-              <NextAndPreviousButtons
-                hasNextPage={response?.hasNextPage}
-                hasPreviousPage={response?.hasPreviousPage}
-                IsPublic={IsPublic}
-                page={Number(page)}
-              />
+              {hasButtons && (
+                <NextAndPreviousButtons
+                  hasNextPage={response?.hasNextPage}
+                  hasPreviousPage={response?.hasPreviousPage}
+                  IsPublic={IsPublic}
+                  page={Number(page)}
+                />
+              )}
             </div>
           ) : (
             <p className="text-gray-500 text-center">
@@ -97,3 +82,21 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
     </div>
   );
 }
+
+const container = {
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.8,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
