@@ -14,6 +14,7 @@ function MobileMenu() {
 
   const handleLogout = () => {
     dispatch(logout());
+    toggleOpen();
   };
 
   const variants = {
@@ -44,6 +45,7 @@ function MobileMenu() {
               <Link
                 to={"/"}
                 className={location.pathname === "/" ? "font-bold" : ""}
+                onClick={() => toggleOpen()}
               >
                 <p className="text-center">Sobre</p>
               </Link>
@@ -52,6 +54,7 @@ function MobileMenu() {
                 className={
                   location.pathname === "/wallpapers" ? "font-bold" : ""
                 }
+                onClick={() => toggleOpen()}
               >
                 <p className="text-center p-1">Wallpapers</p>
               </Link>
@@ -64,6 +67,7 @@ function MobileMenu() {
                         ? "font-bold"
                         : ""
                     }
+                    onClick={() => toggleOpen()}
                   >
                     <p className="text-center p-1">Meus</p>
                   </Link>
@@ -72,6 +76,7 @@ function MobileMenu() {
                     className={
                       location.pathname === "/form-wallpaper" ? "font-bold" : ""
                     }
+                    onClick={() => toggleOpen()}
                   >
                     <p className="text-center p-1">Enviar</p>
                   </Link>
@@ -80,6 +85,7 @@ function MobileMenu() {
                     className={
                       location.pathname === "/profile" ? "font-bold" : ""
                     }
+                    onClick={() => toggleOpen()}
                   >
                     <p className="text-center p-1">Perfil</p>
                   </Link>
@@ -97,11 +103,11 @@ function MobileMenu() {
                 </Link>
               )}
             </motion.div>
-          ) : (
+          ) : location.pathname !== "/" ? (
             <div className="w-auto">
               <Logo w={5} />
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </>
