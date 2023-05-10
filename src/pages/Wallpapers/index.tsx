@@ -37,11 +37,19 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
 
   useEffect(() => {
     dispatch(getWallpapers(IsPublic, searchQuery, page));
-  }, [page, IsPublic, searchQuery, dispatch]);
+  }, []);
+
+  const Search = () => {
+    dispatch(getWallpapers(IsPublic, searchQuery, page));
+  };
 
   return (
     <div className="flex flex-col gap-5 items-center flex-grow py-5 w-full">
-      <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <SearchInput
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        Search={Search}
+      />
       {loading ? (
         <div className="flex flex-grow justify-center items-center">
           <Loader />
