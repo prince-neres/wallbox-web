@@ -99,7 +99,7 @@ function MobileMenu() {
                   to={"/login"}
                   className={location.pathname === "/login" ? "font-bold" : ""}
                 >
-                  <p className="text-center p-2">Login</p>
+                  <p className="text-center p-1">Login</p>
                 </Link>
               )}
             </motion.div>

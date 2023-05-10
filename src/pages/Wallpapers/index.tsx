@@ -37,7 +37,7 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
 
   useEffect(() => {
     dispatch(getWallpapers(IsPublic, searchQuery, page));
-  }, []);
+  }, [page]);
 
   const Search = () => {
     dispatch(getWallpapers(IsPublic, searchQuery, page));
@@ -55,46 +55,44 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
           <Loader />
         </div>
       ) : (
-        <>
-          <motion.ul
-            className="container"
-            variants={container}
-            initial="hidden"
-            animate="visible"
-          >
-            {response.wallpapers?.length ? (
-              <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
-                {response.wallpapers?.map((wallpaper: WallpaperType, index) => (
-                  <motion.li key={index} className="item" variants={item}>
-                    <Wallpaper
-                      key={wallpaper.id}
-                      id={wallpaper.id}
-                      user={wallpaper.user}
-                      image={wallpaper.image}
-                      title={wallpaper.title}
-                      description={wallpaper.description}
-                      tags={wallpaper.tags}
-                      filename={wallpaper.filename}
-                      date_created={wallpaper.date_created}
-                      date_updated={wallpaper.date_updated}
-                      is_public={IsPublic}
-                    />
-                  </motion.li>
-                ))}
-              </div>
-            ) : (
-              <p className="text-gray-500 text-center">
-                Nenhum wallpaper encontrado :(
-              </p>
-            )}
-          </motion.ul>
-          <NextAndPreviousButtons
-            hasNextPage={response?.hasNextPage}
-            hasPreviousPage={response?.hasPreviousPage}
-            IsPublic={IsPublic}
-            page={Number(page)}
-          />
-        </>
+        <motion.ul
+          className="container"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          {response.wallpapers?.length ? (
+            <div className="flex flex-row flex-wrap gap-5 justify-center items-center">
+              {response.wallpapers?.map((wallpaper: WallpaperType, index) => (
+                <motion.li key={index} className="item" variants={item}>
+                  <Wallpaper
+                    key={wallpaper.id}
+                    id={wallpaper.id}
+                    user={wallpaper.user}
+                    image={wallpaper.image}
+                    title={wallpaper.title}
+                    description={wallpaper.description}
+                    tags={wallpaper.tags}
+                    filename={wallpaper.filename}
+                    date_created={wallpaper.date_created}
+                    date_updated={wallpaper.date_updated}
+                    is_public={IsPublic}
+                  />
+                </motion.li>
+              ))}
+              <NextAndPreviousButtons
+                hasNextPage={response?.hasNextPage}
+                hasPreviousPage={response?.hasPreviousPage}
+                IsPublic={IsPublic}
+                page={Number(page)}
+              />
+            </div>
+          ) : (
+            <p className="text-gray-500 text-center">
+              Nenhum wallpaper encontrado :(
+            </p>
+          )}
+        </motion.ul>
       )}
     </div>
   );
