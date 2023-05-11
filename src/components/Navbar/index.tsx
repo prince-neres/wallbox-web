@@ -36,50 +36,75 @@ function Navbar() {
       <Link to="/" className="hidden sm:block">
         <Logo w={5} />
       </Link>
-      <div className="hidden sm:flex sm:flex-row p-8">
-        <Link to="/" className={location.pathname === "/" ? "font-bold" : ""}>
-          <p className="flex pr-5">Sobre</p>
+      <div className="hidden sm:flex sm:flex-row p-8 items-center justify-center">
+        <Link
+          to="/"
+          className={
+            location.pathname === "/" ? "nav-link-activate" : "nav-link-hover"
+          }
+        >
+          <p className="p-3">Sobre</p>
         </Link>
         <Link
           to="/wallpapers"
-          className={location.pathname === "/wallpapers" ? "font-bold" : ""}
+          className={
+            location.pathname.includes("/wallpapers")
+              ? "nav-link-activate"
+              : "nav-link-hover"
+          }
         >
-          <p className="pr-5">Wallpapers</p>
+          <p className="p-3">Wallpapers</p>
         </Link>
         {userInfo?.token ? (
           <>
             <Link
               to="/user-wallpapers"
               className={
-                location.pathname === "/user-wallpapers" ? "font-bold" : ""
+                location.pathname.includes("/user-wallpapers")
+                  ? "nav-link-activate"
+                  : "nav-link-hover"
               }
             >
-              <p className="pr-5">Meus</p>
+              <p className="p-3">Meus</p>
             </Link>
             <Link
               to="/form-wallpaper"
               className={
-                location.pathname === "/form-wallpaper" ? "font-bold" : ""
+                location.pathname === "/form-wallpaper"
+                  ? "nav-link-activate"
+                  : "nav-link-hover"
               }
             >
-              <p className="pr-5">Enviar</p>
+              <p className="p-3">Enviar</p>
             </Link>
             <Link
               to="/profile"
-              className={location.pathname === "/profile" ? "font-bold" : ""}
+              className={
+                location.pathname === "/profile"
+                  ? "nav-link-activate"
+                  : "nav-link-hover"
+              }
             >
-              <p className="pr-5">Perfil</p>
+              <p className="p-3">Perfil</p>
             </Link>
-            <button type="button" onClick={handleLogout}>
-              <p className="flex">Sair</p>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="nav-link-hover"
+            >
+              <p className="p-3">Sair</p>
             </button>
           </>
         ) : (
           <Link
             to="/login"
-            className={location.pathname === "/login" ? "font-bold" : ""}
+            className={
+              location.pathname === "/login"
+                ? "nav-link-activate"
+                : "nav-link-hover"
+            }
           >
-            <p className="flex pr-5">Login</p>
+            <p className="p-3">Login</p>
           </Link>
         )}
       </div>

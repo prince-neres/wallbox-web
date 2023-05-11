@@ -35,7 +35,7 @@ export default function NextAndPreviousButtons({
               ? `/user-wallpapers/${Number(page) - 1}`
               : `/wallpapers/${Number(page) - 1}`
           }
-          className="cursor-pointer p-2 hover:bg-gray-300 dark:hover:bg-zinc-800 rounded duration-200"
+          className="cursor-pointer p-2 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded duration-200"
         >
           <ChevronLeftIcon className="w-6" />
         </Link>
@@ -46,8 +46,8 @@ export default function NextAndPreviousButtons({
           key={index}
           className={
             page === item
-              ? "font-bold p-2 px-4 bg-cyan-300 rounded"
-              : "p-2 px-4 hover:bg-gray-300 dark:hover:bg-zinc-800 rounded duration-200"
+              ? "font-bold p-2 px-4 bg-gray-200 dark:bg-zinc-800 rounded"
+              : "p-2 px-4 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded duration-200"
           }
         >
           {item}
@@ -64,7 +64,7 @@ export default function NextAndPreviousButtons({
               ? "/user-wallpapers/2"
               : "/wallpapers/2"
           }
-          className="cursor-pointer p-2 hover:bg-gray-300 dark:hover:bg-zinc-800 rounded duration-200"
+          className="cursor-pointer p-2 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded duration-200"
         >
           <ChevronRightIcon className="w-6" />
         </Link>

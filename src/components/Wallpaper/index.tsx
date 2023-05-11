@@ -67,7 +67,7 @@ const Wallpaper = ({
         <img
           src={image}
           alt={title}
-          className="cursor-pointer select-none aspect-video "
+          className="cursor-pointer select-none rounded aspect-video "
         />
 
         <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 duration-200 bg-black backdrop-blur-sm bg-opacity-50">

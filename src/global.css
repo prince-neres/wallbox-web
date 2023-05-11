@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link-activate {
+    @apply bg-gray-200 dark:bg-zinc-800 rounded mr-1 font-bold text-black dark:text-white;
+  }
+  .nav-link-hover {
+    @apply hover:bg-gray-200 dark:hover:bg-zinc-800 rounded duration-200;
+  }
+}
