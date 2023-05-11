@@ -31,6 +31,7 @@ export interface PaginatedResponse {
   wallpapers: WallpaperType[];
   hasNextPage?: boolean;
   hasPreviousPage?: boolean;
+  pages?: number;
 }
 
 export interface WallpapersType {

@@ -14,8 +14,9 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
   const { page } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const { wallpapers } = useSelector((state: RootState) => state);
-  const { response, loading } = wallpapers;
+  const { response, loading } = useSelector(
+    (state: RootState) => state.wallpapers
+  );
   const hasButtons = response?.hasNextPage || response?.hasPreviousPage;
 
   useEffect(() => {
@@ -67,8 +68,9 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                 <NextAndPreviousButtons
                   hasNextPage={response?.hasNextPage}
                   hasPreviousPage={response?.hasPreviousPage}
+                  pages={response?.pages || 1}
                   IsPublic={IsPublic}
-                  page={Number(page)}
+                  page={Number(page) || 1}
                 />
               )}
             </div>
