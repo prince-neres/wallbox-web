@@ -1,13 +1,13 @@
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import Wallpaper from "../../components/Wallpaper";
 import { WallpaperType } from "../../types";
-import { useState, useEffect } from "react";
 import SearchInput from "../../components/SearchInput";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { getWallpapers } from "../../store/wallpapers/wallpapersApi";
 import Loader from "../../components/Loader";
-import { motion } from "framer-motion";
 import NextAndPreviousButtons from "../../components/NextAndPreviousButtons";
 
 export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
@@ -64,20 +64,20 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                   />
                 </motion.li>
               ))}
-              {hasButtons && (
-                <NextAndPreviousButtons
-                  hasNextPage={response?.hasNextPage}
-                  hasPreviousPage={response?.hasPreviousPage}
-                  pages={response?.pages || 1}
-                  IsPublic={IsPublic}
-                  page={Number(page) || 1}
-                />
-              )}
             </div>
           ) : (
             <p className="text-gray-500 text-center">
               Nenhum wallpaper encontrado :(
             </p>
+          )}
+          {hasButtons && (
+            <NextAndPreviousButtons
+              hasNextPage={response?.hasNextPage}
+              hasPreviousPage={response?.hasPreviousPage}
+              pages={response?.pages || 1}
+              IsPublic={IsPublic}
+              page={Number(page) || 1}
+            />
           )}
         </motion.ul>
       )}
