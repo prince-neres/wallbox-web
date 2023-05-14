@@ -6,9 +6,13 @@
 
 @layer components {
   .nav-link-activate {
-    @apply bg-gray-200 dark:bg-zinc-800 rounded mx-1 font-bold text-black dark:text-white;
+    @apply bg-gray-200 p-3 dark:bg-zinc-800 rounded mx-1 font-bold text-black dark:text-white;
   }
   .nav-link-hover {
-    @apply hover:bg-gray-200 dark:hover:bg-zinc-800 rounded duration-200;
+    @apply hover:bg-gray-200 p-3 dark:hover:bg-zinc-800 rounded duration-200;
+  }
+
+  .drop-down-menu-item {
+    @apply flex gap-1 hover:text-black dark:hover:text-white hover:font-bold p-3 duration-100;
   }
 }

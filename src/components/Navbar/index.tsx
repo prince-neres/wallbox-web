@@ -1,20 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../../store/user/userSlice";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/user/userSlice";
 import ToggleTheme from "./ToogleTheme";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./Mobile";
 import Logo from "./Logo";
+import UserDropDown from "./UserDropDown";
 
 function Navbar() {
   const location = useLocation();
-  const dispatch = useDispatch();
   const { userInfo } = useSelector(selectUser);
-  const [isMobile, setIsMobile] = useState(false);
-
-  const handleLogout = () => {
-    dispatch(logout());
-  };
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,80 +27,43 @@ function Navbar() {
     };
   }, []);
 
+  const getClassnameOfNavItem = (route: string) => {
+    const currentRoute = location.pathname.split("/")[1];
+    return route === currentRoute ? "nav-link-activate" : "nav-link-hover";
+  };
+
   return (
-    <nav className="flex items-center w-full h-auto justify-between sm:justify-around text-center">
+    <nav className="flex items-center w-full h-auto justify-between sm:justify-around text-center select-none">
       <Link to="/" className="hidden sm:block">
-        <Logo w={110} />
+        <Logo w={100} />
       </Link>
-      <div className="hidden sm:flex sm:flex-row p-8 items-center justify-center">
-        <Link
-          to="/"
-          className={
-            location.pathname === "/" ? "nav-link-activate" : "nav-link-hover"
-          }
-        >
-          <p className="p-3">Sobre</p>
+      <div className="hidden sm:flex sm:flex-row py-6 items-center justify-center">
+        <Link to="/" className={getClassnameOfNavItem("")}>
+          Sobre
         </Link>
-        <Link
-          to="/wallpapers"
-          className={
-            location.pathname.includes("/wallpapers")
-              ? "nav-link-activate"
-              : "nav-link-hover"
-          }
-        >
-          <p className="p-3">Wallpapers</p>
+        <Link to="/wallpapers" className={getClassnameOfNavItem("wallpapers")}>
+          Wallpapers
         </Link>
+
         {userInfo?.token ? (
           <>
             <Link
               to="/user-wallpapers"
-              className={
-                location.pathname.includes("/user-wallpapers")
-                  ? "nav-link-activate"
-                  : "nav-link-hover"
-              }
+              className={getClassnameOfNavItem("user-wallpapers")}
             >
-              <p className="p-3">Meus</p>
+              Meus
             </Link>
             <Link
               to="/form-wallpaper"
-              className={
-                location.pathname === "/form-wallpaper"
-                  ? "nav-link-activate"
-                  : "nav-link-hover"
-              }
+              className={`mr-1 ${getClassnameOfNavItem("form-wallpaper")}`}
             >
-              <p className="p-3">Enviar</p>
+              Enviar
             </Link>
-            <Link
-              to="/profile"
-              className={
-                location.pathname === "/profile"
-                  ? "nav-link-activate"
-                  : "nav-link-hover"
-              }
-            >
-              <p className="p-3">Perfil</p>
-            </Link>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="nav-link-hover"
-            >
-              <p className="p-3">Sair</p>
-            </button>
+            <UserDropDown user={userInfo} />
           </>
         ) : (
-          <Link
-            to="/login"
-            className={
-              location.pathname === "/login"
-                ? "nav-link-activate"
-                : "nav-link-hover"
-            }
-          >
-            <p className="p-3">Login</p>
+          <Link to="/login" className={getClassnameOfNavItem("login")}>
+            Login
           </Link>
         )}
       </div>

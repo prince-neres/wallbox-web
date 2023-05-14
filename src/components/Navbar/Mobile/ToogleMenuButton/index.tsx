@@ -9,7 +9,7 @@ export default ({
 }) => (
   <div
     onClick={toggle}
-    className="w-5 h-5 mx-7 flex flex-col justify-between cursor-pointer select-none"
+    className="my-8 w-5 h-5 mx-7 flex flex-col justify-between cursor-pointer"
   >
     <motion.div
       className="bg-light-text dark:bg-dark-text rounded-md h-1 w-8"
