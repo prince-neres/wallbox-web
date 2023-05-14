@@ -105,7 +105,7 @@ function MobileMenu() {
             </motion.div>
           ) : location.pathname !== "/" ? (
             <div className="w-auto">
-              <Logo w={5} />
+              <Logo w={100} />
             </div>
           ) : null}
         </div>

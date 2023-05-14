@@ -9,9 +9,9 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0, rotate: 0 }}
           animate={{ opacity: 1, scale: 1, rotate: 360 }}
           transition={{ duration: 1 }}
-          className="rounded-lg flex justify-center items-center text-white"
+          className="rounded-lg flex justify-center items-center"
         >
-          <Logo w={10} />
+          <Logo w={250} />
         </motion.div>
         <p className="indent-8 text-justify">
           O WallBox é uma aplicação de compartilhamento de papéis de parede para
