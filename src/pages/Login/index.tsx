@@ -48,7 +48,10 @@ export default function LoginForm() {
       </button>
       <div>
         Sem conta?{" "}
-        <Link className="text-cyan-600 hover:text-cyan-500" to={"/register"}>
+        <Link
+          className="text-blue-700 hover:text-blue-500 duration-100"
+          to={"/register"}
+        >
           Cadastrar
         </Link>
       </div>

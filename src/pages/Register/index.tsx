@@ -64,10 +64,7 @@ export default function RegisterForm() {
       </button>
       <div>
         Possui conta?{" "}
-        <Link
-          className="text-cyan-600 rounded hover:text-cyan-500"
-          to={"/login"}
-        >
+        <Link className="text-blue-700 hover:text-blue-500" to={"/login"}>
           Entrar
         </Link>
       </div>

@@ -23,7 +23,7 @@ export default function NextAndPreviousButtons({
   }
 
   return (
-    <div className="flex justify-center items-center gap-3 mt-5 w-screen text:black dark:text-white">
+    <div className="flex justify-center items-center gap-3 mt-5 w-full-screen text:black dark:text-white">
       {hasPreviousPage && (
         <Link
           to={

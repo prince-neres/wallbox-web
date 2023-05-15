@@ -43,7 +43,7 @@ export default function FileInput({
         <ArrowUpTrayIcon className="h-12 w-12 text-gray-600" />
         <span className="font-medium text-gray-600">
           Solte a imagem aqui, ou{" "}
-          <span className="text-blue-600 underline">Procure</span>
+          <span className="text-blue-700 hover:text-blue-500">Procure</span>
         </span>
         {image && (
           <div className="flex flex-col justify-center items-center">

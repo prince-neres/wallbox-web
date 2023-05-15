@@ -6,7 +6,7 @@ function Footer() {
         <a
           href="https://prince-neres.space"
           target="_blank"
-          className="hover:text-cyan-500 duration-200"
+          className="text-blue-700 hover:text-blue-500 duration-100"
           rel="noreferrer"
         >
           prince-neres.space.{" "}
