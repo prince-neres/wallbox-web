@@ -30,6 +30,33 @@ const wallpapersSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    updateWallpaperFavoriteCount: (
+      state,
+      action: PayloadAction<{ id: number; isFavorite: boolean }>
+    ) => {
+      const { id, isFavorite } = action.payload;
+      const wallpaperIndex = state.response.wallpapers.findIndex(
+        (wallpaper) => wallpaper.id === id
+      );
+      if (wallpaperIndex !== -1) {
+        const wallpaper = state.response.wallpapers[wallpaperIndex];
+        if (isFavorite) {
+          wallpaper.favorite_count++;
+        } else {
+          wallpaper.favorite_count--;
+        }
+      }
+    },
+    updateWallpaperDownloadsCount: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      const wallpaperIndex = state.response.wallpapers.findIndex(
+        (wallpaper) => wallpaper.id === id
+      );
+      if (wallpaperIndex !== -1) {
+        const wallpaper = state.response.wallpapers[wallpaperIndex];
+        wallpaper.downloads++;
+      }
+    },
   },
 });
 
@@ -37,5 +64,7 @@ export const {
   wallpapersRequest,
   wallpapersRequestSuccess,
   wallpapersRequestFail,
+  updateWallpaperFavoriteCount,
+  updateWallpaperDownloadsCount,
 } = wallpapersSlice.actions;
 export default wallpapersSlice.reducer;

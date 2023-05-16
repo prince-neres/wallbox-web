@@ -1,17 +1,17 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
 
-type ModalDeletionProps = {
+type WallpaperModalDeletionProps = {
   title: string;
   onCancel: () => void;
   onConfirm: () => void;
 };
 
-export default function ModalDeletion({
+export default function WallpaperModalDeletion({
   title,
   onCancel,
   onConfirm,
-}: ModalDeletionProps) {
+}: WallpaperModalDeletionProps) {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">

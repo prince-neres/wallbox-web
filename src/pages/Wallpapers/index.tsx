@@ -60,6 +60,8 @@ export default function Wallpapers({ IsPublic }: { IsPublic: boolean }) {
                     filename={wallpaper.filename}
                     date_created={wallpaper.date_created}
                     date_updated={wallpaper.date_updated}
+                    favorite_count={wallpaper.favorite_count}
+                    downloads={wallpaper.downloads}
                     is_public={IsPublic}
                   />
                 </motion.li>

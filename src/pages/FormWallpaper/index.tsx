@@ -1,5 +1,5 @@
 import WallpaperUpload from "../../components/WallpaperUpload";
-import WallpaperEdit from "../../components/Wallpaper/WallpaperEdit";
+import WallpaperEdit from "../../components/Wallpaper/WallpaperEditForm";
 
 export default function FormWallpaper({ edit }: { edit?: boolean }) {
   return (

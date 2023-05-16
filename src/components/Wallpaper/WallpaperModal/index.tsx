@@ -1,26 +1,21 @@
-import { ArrowDownTrayIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
+import FavoriteButton from "./FavoriteButton";
+import DownloadButton from "./DownloadButton";
 
-type ModalDeletionProps = {
+type WallpaperModalProps = {
+  wallpaper_id: number;
   alt: string;
   src: string;
   onCancel: () => void;
 };
 
-export default function ModalWallpaper({
+export default function WallpaperModal({
+  wallpaper_id,
   alt,
   src,
   onCancel,
-}: ModalDeletionProps) {
-  const handleImageDownload = () => {
-    const link = document.createElement("a");
-    link.href = src;
-    link.download = alt;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
+}: WallpaperModalProps) {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center bg-black backdrop-blur-sm bg-opacity-80">
       <div className="flex flex-col gap-3 sm:w-2/3 mx-5 items-center z-10 ">
@@ -40,14 +35,9 @@ export default function ModalWallpaper({
         >
           <img src={src} alt={alt} className="select-none max-h-[600px]" />
         </motion.div>
-        <div className="w-36 flex justify-center items-center gap-2 group duration-200">
-          <ArrowDownTrayIcon className="text-white h-5 w-5 group-hover:text-gray-400 duration-200" />
-          <p
-            className="text-white text-center font-bold group-hover:text-gray-400 duration-200 cursor-pointer"
-            onClick={handleImageDownload}
-          >
-            Baixar
-          </p>
+        <div className="w-36 flex justify-center items-center gap-2">
+          <DownloadButton wallpaper_id={wallpaper_id} src={src} alt={alt} />
+          <FavoriteButton wallpaper_id={wallpaper_id} />
         </div>
       </div>
     </div>

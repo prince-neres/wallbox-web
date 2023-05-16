@@ -9,7 +9,7 @@ export interface UserInfoType {
 }
 
 export interface WallpaperType {
-  id?: number;
+  id: number;
   user?: UserInfoType;
   title?: string;
   description?: string;
@@ -19,6 +19,8 @@ export interface WallpaperType {
   date_created?: string;
   date_updated?: string;
   is_public?: boolean;
+  favorite_count: number;
+  downloads: number;
 }
 
 export interface UserType {

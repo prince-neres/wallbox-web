@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { WallpaperType } from "../../types";
-import { formatDate } from "../../utils/scripts";
-import ModalWallpaper from "./ModalWallpaper";
+import ModalWallpaper from "./WallpaperModal";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import { toast } from "react-toastify";
-import ModalDeletion from "./ModalDeletion";
+import WallpaperModalDeletion from "./WallpaperModalDeletion";
 import userDefaultImage from "../../assets/user.png";
 import WallpaperActions from "./WallpaperActions";
+import WallpaperStats from "./WallpaperStats";
 
 const Wallpaper = ({
   id,
@@ -18,6 +18,8 @@ const Wallpaper = ({
   date_created,
   is_public,
   description,
+  favorite_count,
+  downloads,
 }: WallpaperType) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showWallpaperModel, setShowWallpaperModel] = useState(false);
@@ -41,7 +43,7 @@ const Wallpaper = ({
   return (
     <div className="flex flex-col">
       {showDeleteConfirmation && (
-        <ModalDeletion
+        <WallpaperModalDeletion
           title="Confirmar deleção?"
           onCancel={() => setShowDeleteConfirmation(false)}
           onConfirm={handleDelete}
@@ -49,6 +51,7 @@ const Wallpaper = ({
       )}
       {showWallpaperModel && (
         <ModalWallpaper
+          wallpaper_id={id}
           src={image || ""}
           alt={title || ""}
           onCancel={() => setShowWallpaperModel(false)}
@@ -73,7 +76,7 @@ const Wallpaper = ({
         <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 duration-200 bg-black backdrop-blur-sm bg-opacity-50">
           <div className="px-6 py-4 text-white flex flex-col justify-between w-full h-full">
             <div>
-              <div className="line-clamp-1 mb-2">{title}</div>
+              <div className="line-clamp-1 mb-2">{title} </div>
               <div className="line-clamp-1 mb-2">
                 {tags?.map((tag, index) => (
                   <span
@@ -84,7 +87,6 @@ const Wallpaper = ({
                   </span>
                 ))}
               </div>
-              <div className="line-clamp-1">{description}</div>
             </div>
             <div className="flex justify-between items-center">
               <span className="flex gap-2 items-center">
@@ -96,9 +98,13 @@ const Wallpaper = ({
                 )}
                 <p className="line-clamp-1">{user?.username}</p>
               </span>
-              <p className="text-end">
-                {date_created && formatDate(date_created)}
-              </p>
+              <div className="relative z-50">
+                <WallpaperStats
+                  wallpaper_id={id}
+                  favorite_count={favorite_count}
+                  downloads={downloads}
+                />
+              </div>
             </div>
           </div>
         </div>
