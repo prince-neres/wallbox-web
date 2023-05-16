@@ -15,9 +15,7 @@ const Wallpaper = ({
   title,
   tags,
   user,
-  date_created,
   is_public,
-  description,
   favorite_count,
   downloads,
 }: WallpaperType) => {
