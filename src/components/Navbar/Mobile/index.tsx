@@ -74,6 +74,13 @@ function MobileMenu() {
               >
                 Perfil
               </Link>
+              <Link
+                to={"/favorites"}
+                className={getClassnameOfNavItem("favorites")}
+                onClick={() => toggleOpen()}
+              >
+                Favoritos
+              </Link>
 
               <button onClick={handleLogout}>Sair</button>
             </>

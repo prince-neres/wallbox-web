@@ -6,6 +6,7 @@ import Base from "../pages/Base";
 import Profile from "../pages/Profile";
 import FormWallpaper from "../pages/FormWallpaper";
 import UserWallpapers from "../pages/UserWallpapers";
+import Favorites from "../pages/Favorites";
 import Home from "../pages/Home";
 import Wallpapers from "../pages/Wallpapers";
 
@@ -26,6 +27,14 @@ function Router() {
             element={
               <PrivateRoute>
                 <UserWallpapers />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <PrivateRoute>
+                <Favorites />
               </PrivateRoute>
             }
           />

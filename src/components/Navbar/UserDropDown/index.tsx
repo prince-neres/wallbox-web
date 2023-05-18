@@ -2,6 +2,7 @@ import {
   ArrowLeftOnRectangleIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  HeartIcon,
 } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ export default function UserDropDown({ user }: { user: UserInfoType }) {
   return (
     <div className="relative">
       <button
-        className={`flex gap-1 p-2 justify-center items-center w-[100px] rounded ${
+        className={`flex gap-1 p-2 justify-center items-center w-[120px] rounded ${
           isOpen &&
           "dark:bg-zinc-800 bg-gray-200 rounded-b-none text-black dark:text-white font-bold"
         }`}
@@ -45,7 +46,7 @@ export default function UserDropDown({ user }: { user: UserInfoType }) {
         )}
       </button>
       {isOpen && (
-        <ul className="w-[100px] absolute top-full flex flex-col left-0 z-50 bg-gray-200 dark:bg-zinc-800 rounded-b">
+        <ul className="w-[120px] absolute top-full flex flex-col left-0 z-50 bg-gray-200 dark:bg-zinc-800 rounded-b">
           <Link
             onClick={toggleMenu}
             to="/profile"
@@ -53,6 +54,14 @@ export default function UserDropDown({ user }: { user: UserInfoType }) {
           >
             <PencilIcon className="w-5" />
             Editar
+          </Link>
+          <Link
+            onClick={toggleMenu}
+            to="/favorites"
+            className="drop-down-menu-item"
+          >
+            <HeartIcon className="w-5" />
+            Favoritos
           </Link>
           <button
             type="button"

@@ -88,7 +88,7 @@ const Wallpaper = ({
             </div>
             <div className="flex justify-between items-center">
               <span className="flex gap-2 items-center">
-                {is_public && (
+                {is_public && user && (
                   <img
                     src={user?.image || userDefaultImage}
                     className="h-10 w-10 rounded-full"

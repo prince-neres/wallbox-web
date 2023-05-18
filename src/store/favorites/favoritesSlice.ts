@@ -26,7 +26,7 @@ const favoritesSlice = createSlice({
       }
     },
     resetFavorites: (state) => {
-      state = [];
+      state.splice(0, state.length);
       localStorage.removeItem("favorites");
     },
   },
