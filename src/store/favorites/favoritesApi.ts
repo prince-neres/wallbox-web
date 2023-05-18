@@ -5,7 +5,7 @@ import { updateWallpaperFavoriteCount } from "../wallpapers/wallpapersSlice";
 
 export const getFavorites = () => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await api.get("/wallpaper/user_favorites");
+    const { data } = await api.get("/wallpaper/user_favorites_ids");
     dispatch(addFavorites(data));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

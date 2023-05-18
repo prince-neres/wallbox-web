@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../../store/user/userSlice";
+import { resetFavorites } from "../../../store/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { UserInfoType } from "../../../types";
@@ -21,6 +22,7 @@ export default function UserDropDown({ user }: { user: UserInfoType }) {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(resetFavorites());
   };
 
   return (

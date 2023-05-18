@@ -1,9 +1,10 @@
-import ToggleButton from "./ToogleMenuButton";
+import { useCycle, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import ToggleButton from "./ToogleMenuButton";
 import { logout, selectUser } from "../../../store/user/userSlice";
-import { useCycle } from "framer-motion";
-import { motion } from "framer-motion";
+import { resetFavorites } from "../../../store/favorites/favoritesSlice";
+
 import Logo from "../Logo";
 
 function MobileMenu() {
@@ -14,6 +15,7 @@ function MobileMenu() {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(resetFavorites());
     toggleOpen();
   };
 
