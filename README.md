@@ -1,51 +1,52 @@
-# Aplicação de Wallpapers WallBox
+# WallBox Wallpapers Application
 
-Projeto feito como meio para práticar habilidades.
+Project made as a means to practice skills.
 
-## Repositório da API: 
+## API repository:
+
 https://github.com/prince-neres/wallbox-api.git
 
-## Como rodar frontend passo a passo:
+## How to run the frontend step by step:
 
-1. Necessário rodar banckend antes, repositório: `git clone https://github.com/prince-neres/wallbox-api.git`
-2. Clone o projeto com `git clone https://github.com/prince-neres/wallbox-web.git`
-3. Entre no diretório do projeto com cd `wallbox-web `
-4. Execute o comando `yarn` ou `npm -i`
-5. Execute o comando `yarn dev` ou `npm run dev`
+1. You need to run the backend first, repository: `git clone https://github.com/prince-neres/wallbox-api.git`
+2. Clone the project with `git clone https://github.com/prince-neres/wallbox-web.git`
+3. Enter the project directory with cd `wallbox-web `
+4. Run the command `yarn` or `npm -i`
+5. Run the command `yarn dev` or `npm run dev`
 
 ### Previews
 
 <div align="center">
-	<h3>Login</h3>
-	<img src="./public/previews/login.jpg" />
+    <h3>Login</h3>
+    <img src="./public/previews/login.jpg" />
 </div>
 
 <div align="center">
-	<h3>Cadastro</h3>
-	<img src="./public/previews/register.jpg" />
+    <h3>Register</h3> 
+    <img src="./public/previews/register.jpg" /> 
 </div>
 
 <div align="center">
-	<h3>Wallpapers</h3>
-	<img src="./public/previews/wallpapers.jpg" />
+   <h3>Wallpapers</h3>
+   <img src="./public/previews/wallpapers.jpg" /> 
 </div>
 
 <div align="center">
-	<h3>Wallpapers do usuário</h3>
-	<img src="./public/previews/user-wallpapers.jpg" />
+   <h3>User Wallpapers</h3>
+   <img src="./public/previews/user-wallpapers.jpg" /> 
+</div>
+
+<div align="center"> 
+    <h3>Wallpaper editing</h3>
+    <img src="./public/previews/wallpaper-edit.jpg" /> 
+</div> 
+
+<div align="center">
+   <h3>Wallpaper upload</h3>
+   <img src="./public/previews/wallpaper-upload.jpg" /> 
 </div>
 
 <div align="center">
-	<h3>Edição de wallpaper</h3>
-	<img src="./public/previews/wallpaper-edit.jpg" />
-</div>
-
-<div align="center">
-	<h3>Upload de wallpaper</h3>
-	<img src="./public/previews/wallpaper-upload.jpg" />
-</div>
-
-<div align="center">
-	<h3>Edição de usuário</h3>
-	<img src="./public/previews/user-edit.jpg" />
+   <h3>Editing user</h3>
+   <img src="./public/previews/user-edit.jpg" /> 
 </div>
